@@ -1,15 +1,18 @@
 from django.contrib import admin
 
 from core.models import (
+    Album,
+    Artist,
+    Genre,
+    Language,
+    Playlist,
     Song,
-    Playlist
 )
 # Register your models here.
 
-
-# class SongFields(admin.ModelAdmin):
-#     list_display = [f.name for f in Song._meta.fields]
-#     search_fields = ('song_name',)
-
-admin.site.register(Song)
+admin.site.register(Album)
+admin.site.register(Artist)
+admin.site.register(Genre)
+admin.site.register(Language)
 admin.site.register(Playlist)
+admin.site.register(Song)

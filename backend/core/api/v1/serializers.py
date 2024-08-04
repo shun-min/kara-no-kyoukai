@@ -7,7 +7,10 @@ from core.models import (
 )
 
 
-class SongSerializer(serializers.HyperlinkedModelSerializer):
+class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = "__all__"
+        # extra_kwargs = {
+        #     "url": {"view_name", "song-detail"}
+        # }

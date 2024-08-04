@@ -12,24 +12,33 @@ class Album(models.Model):
 class Artist(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Genre(models.Model):
     value = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.value
+
 
 class Language(models.Model):
     value = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.value
     
 
 class Song(models.Model):
-    title = models.CharField(max_length=100)
-    album = models.CharField(
+    name = models.CharField(max_length=100)
+    album = models.ForeignKey(
         Album,
         on_delete=models.PROTECT,
         null=True,
         blank=True,
     )
-    artist = models.CharField(
+    artist = models.ForeignKey(
         Artist,
         on_delete=models.PROTECT,
         null=True,
@@ -50,6 +59,12 @@ class Song(models.Model):
     )
     path = models.TextField()
 
+    class Meta:
+        unique_together = ('artist', 'name')
+    
+    def __str__(self):
+        return self.name
+
 
 class Playlist(models.Model):
     name = models.CharField(max_length=100)
@@ -57,6 +72,8 @@ class Playlist(models.Model):
         max_length=50,
         default="Recent",
     )
+    def __str__(self):
+        return self.name
 
 
 class PlaylistItem(models.Model):

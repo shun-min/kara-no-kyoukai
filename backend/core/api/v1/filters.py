@@ -7,17 +7,21 @@ from core.models import (
 
 
 class SongFilter(filters.FilterSet):
-    artist = filters.CharFilter(
-        method = "getSongsByArtist", 
-        label="Group By Artist",
-    )
+    # artist__name = filters.CharFilter(
+        # method = "getSongsByArtist", 
+        # label="Group By Artist",
+    #     lookup_expr="icontains",
+    # )
     class Meta:
         model = Song
-        fields = ["artist", "language"]
+        fields = [
+            'artist__name', 
+            'language__value',
+        ]
 
     def getSongsByArtist(self, queryset: QuerySet, name, value: str):
-        song_ids = Song.object.filter(
-            language=value,
+        song_ids = Song.objects.filter(
+            artist=value,
         ).value_list("song_id", flat=True)
         if song_ids:
             return queryset.filter(id__in=song_ids)

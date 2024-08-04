@@ -14,7 +14,7 @@ from core.api.v1.serializers import (
 )
 
 class SongListCreateView(generics.ListCreateAPIView):
-    queryset = Song.objects.all().order_by("-title")
+    queryset = Song.objects.all().order_by("id")
     serializer_class = SongSerializer
     filterset_class = SongFilter
     pagination_class = None

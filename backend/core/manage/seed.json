@@ -1,0 +1,77 @@
+[
+{
+  "model": "core.artist",
+  "pk": 1,
+  "fields": {
+    "name": "Yonezu Kenshi"
+  }
+},
+{
+  "model": "core.artist",
+  "pk": 2,
+  "fields": {
+    "name": "Fei Yu Qing"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 1,
+  "fields": {
+    "value": "J-pop"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 2,
+  "fields": {
+    "value": "Mandarin-pop"
+  }
+},
+{
+  "model": "core.language",
+  "pk": 1,
+  "fields": {
+    "value": "English"
+  }
+},
+{
+  "model": "core.language",
+  "pk": 2,
+  "fields": {
+    "value": "Japanese"
+  }
+},
+{
+  "model": "core.language",
+  "pk": 3,
+  "fields": {
+    "value": "Mandarin"
+  }
+},
+{
+  "model": "core.song",
+  "pk": 1,
+  "fields": {
+    "name": "Lemon",
+    "album": null,
+    "artist": 1,
+    "genre": 1,
+    "hitcounts": 0,
+    "language": 2,
+    "path": "/home/lam/Music/karaoke/japanese/KenshiYonezu-Lemon.mp4"
+  }
+},
+{
+  "model": "core.song",
+  "pk": 2,
+  "fields": {
+    "name": "Yi Jian Mei",
+    "album": null,
+    "artist": 2,
+    "genre": 2,
+    "hitcounts": 0,
+    "language": 3,
+    "path": "/home/lam/Music/karaoke/mandarin/FeiYuChing-YiJianMei.mp4"
+  }
+}
+]
