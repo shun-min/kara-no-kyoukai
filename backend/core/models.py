@@ -1,20 +1,54 @@
 from django.db import models
 
 # Create your models here.
+class Album(models.Model):
+    name = models.CharField(max_length=100)
+    publication_year = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+
+
+class Artist(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Genre(models.Model):
+    value = models.CharField(max_length=50)
+
+
+class Language(models.Model):
+    value = models.CharField(max_length=50)
+    
+
 class Song(models.Model):
     title = models.CharField(max_length=100)
-    artist = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True,
-    )
     album = models.CharField(
-        max_length=100
+        Album,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
     )
-    language = models.CharField(max_length=30)
+    artist = models.CharField(
+        Artist,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
+    genre = models.ForeignKey(
+        Genre,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
     hitcounts = models.IntegerField(default=0)
+    language = models.ForeignKey(
+        Language,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
+    path = models.TextField()
 
 
 class Playlist(models.Model):
