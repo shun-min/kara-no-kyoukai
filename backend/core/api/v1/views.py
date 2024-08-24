@@ -6,9 +6,9 @@ from core.models import (
     Playlist,
     PlaylistItem,
 )
-from core.api.v1.filters import (
-    SongFilter,
-)
+# from core.api.v1.filters import (
+#     SongFilter,
+# )
 from core.api.v1.serializers import (
     SongSerializer,
 )
@@ -16,5 +16,6 @@ from core.api.v1.serializers import (
 class SongListCreateView(generics.ListCreateAPIView):
     queryset = Song.objects.all().order_by("id")
     serializer_class = SongSerializer
-    filterset_class = SongFilter
+    # filterset_class = SongFilter
+    filterset_fields = ['name']
     pagination_class = None
