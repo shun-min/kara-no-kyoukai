@@ -10,5 +10,18 @@ from core.models import (
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ['id', 'name']
+        fields = "__all__"
+
+
+class PlaylistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Playlist
+        fields = "__all__"
+
+
+class PlaylistItemSerializer(serializers.ModelSerializer):
+    playlist = serializers.HyperlinkedRelatedField(view_name="playlist-list-create-v1", read_only=True)
+    class Meta:
+        model = PlaylistItem
+        fields = "__all__"
     

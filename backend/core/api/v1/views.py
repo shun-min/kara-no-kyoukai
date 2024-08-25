@@ -11,6 +11,8 @@ from core.models import (
 # )
 from core.api.v1.serializers import (
     SongSerializer,
+    PlaylistSerializer,
+    PlaylistItemSerializer,
 )
 
 class SongListCreateView(generics.ListCreateAPIView):
@@ -18,4 +20,18 @@ class SongListCreateView(generics.ListCreateAPIView):
     serializer_class = SongSerializer
     # filterset_class = SongFilter
     filterset_fields = ['name']
+    pagination_class = None
+
+
+class PlaylistListCreateView(generics.ListCreateAPIView):
+    queryset = Playlist.objects.all().order_by("id")
+    serializer_class = PlaylistSerializer,
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class PlaylistItemRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PlaylistItem.objects.all().order_by("id")
+    serializer_class = PlaylistItemSerializer
+    filterset_fields = ['playlist__id']
     pagination_class = None

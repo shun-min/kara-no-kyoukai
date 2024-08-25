@@ -6,6 +6,7 @@ from core.models import (
     Genre,
     Language,
     Playlist,
+    PlaylistItem,
     Song,
 )
 # Register your models here.
@@ -15,4 +16,5 @@ admin.site.register(Artist)
 admin.site.register(Genre)
 admin.site.register(Language)
 admin.site.register(Playlist)
+admin.site.register(PlaylistItem)
 admin.site.register(Song)
