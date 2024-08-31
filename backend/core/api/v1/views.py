@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.response import Response
 
 from core.models import (
@@ -25,13 +25,33 @@ class SongListCreateView(generics.ListCreateAPIView):
 
 class PlaylistListCreateView(generics.ListCreateAPIView):
     queryset = Playlist.objects.all().order_by("id")
-    serializer_class = PlaylistSerializer,
+    serializer_class = PlaylistSerializer
     filterset_fields = ['name']
+    pagination_class = None
+
+
+# class Playlist(generics.RetrieveUpdateDestroyAPIView):
+
+
+
+class PlaylistItemRListCreateView(generics.ListCreateAPIView):
+    queryset = PlaylistItem.objects.all().order_by("id")
+    serializer_class = PlaylistItemSerializer
+    filterset_fields = ['playlist__id']
     pagination_class = None
 
 
 class PlaylistItemRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = PlaylistItem.objects.all().order_by("id")
     serializer_class = PlaylistItemSerializer
-    filterset_fields = ['playlist__id']
     pagination_class = None
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance_id = instance.id
+        instance.delete()
+        data = {
+            "message": f"Object with ID {instance_id} has been deleted. "
+        }
+
+        return Response(data, status=status.HTTP_204_NO_CONTENT)
