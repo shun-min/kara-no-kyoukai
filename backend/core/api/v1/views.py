@@ -2,6 +2,10 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from core.models import (
+    Album,
+    Artist,
+    Genre,
+    Language,
     Song,
     Playlist,
     PlaylistItem,
@@ -10,15 +14,39 @@ from core.models import (
 #     SongFilter,
 # )
 from core.api.v1.serializers import (
+    AlbumSerializer,
+    ArtistSerializer,
     SongSerializer,
     PlaylistSerializer,
     PlaylistItemSerializer,
 )
 
+
+class AlbumListCreateView(generics.ListCreateAPIView):
+    queryset = Album.objects.all().order_by("id")
+    serializer_class = AlbumSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class ArtistListCreateView(generics.ListCreateAPIView):
+    queryset = Artist.objects.all().order_by("id")
+    serializer_class = ArtistSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+
+
 class SongListCreateView(generics.ListCreateAPIView):
     queryset = Song.objects.all().order_by("id")
     serializer_class = SongSerializer
     # filterset_class = SongFilter
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class RetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Song.objects.all().order_by("id")
+    serializer_class = SongSeriaslizer
     filterset_fields = ['name']
     pagination_class = None
 

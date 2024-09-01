@@ -1,6 +1,10 @@
 from rest_framework import serializers
 
 from core.models import (
+    Album,
+    Artist,
+    Genre,
+    Language,
     Playlist,
     PlaylistItem,
     Song,
@@ -16,13 +20,26 @@ class ForeignKeySerializer(serializers.HyperlinkedRelatedField):
             "url": url,
         }
 
+
+class AlbumSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Artist
+        fields = "__all__"
+
+
+class ArtistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Artist
+        fields = "__all__"
+
+
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = "__all__"
 
     def validate(self, attrs):
-        if self.contectt["request"].method == "PUT" and self.instance:
+        if self.context["request"].method == "PUT" and self.instance:
             name = attrs.get("name")
             album = attrs.get("language", self.instance.album)
             language = attrs.get("language", self.instance.language)
@@ -32,7 +49,11 @@ class SongSerializer(serializers.ModelSerializer):
                     album=album,
                     language=language,
                 )
-    
+            else:
+                raise serializers.ValidationError
+        return attrs
+
+
 class PlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Playlist
