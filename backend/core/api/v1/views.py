@@ -44,9 +44,9 @@ class SongListCreateView(generics.ListCreateAPIView):
     pagination_class = None
 
 
-class RetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+class SongRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Song.objects.all().order_by("id")
-    serializer_class = SongSeriaslizer
+    serializer_class = SongSerializer
     filterset_fields = ['name']
     pagination_class = None
 

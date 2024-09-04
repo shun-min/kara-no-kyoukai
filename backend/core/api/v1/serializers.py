@@ -34,6 +34,10 @@ class ArtistSerializer(serializers.ModelSerializer):
 
 
 class SongSerializer(serializers.ModelSerializer):
+    album = ForeignKeySerializer(view_name="album-details-v1", read_only=True)
+    artist = ForeignKeySerializer(view_name="artist-details-v1", read_only=True)
+    genre = ForeignKeySerializer(view_name="genre-details-v1", read_only=True)
+    language = ForeignKeySerializer(view_name="language-details-v1", read_only=True)
     class Meta:
         model = Song
         fields = "__all__"
@@ -41,12 +45,14 @@ class SongSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         if self.context["request"].method == "PUT" and self.instance:
             name = attrs.get("name")
-            album = attrs.get("language", self.instance.album)
+            album = attrs.get("album", self.instance.album)
+            artist = attrs.get("artist", self.instance.artist)
             language = attrs.get("language", self.instance.language)
             if name != self.instance.name:
                 _ = Song.filter(
                     name=name,
                     album=album,
+                    artist=artist,
                     language=language,
                 )
             else:

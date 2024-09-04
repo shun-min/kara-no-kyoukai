@@ -14,13 +14,23 @@ urlpatterns = [
     path(
         "albums/",
         AlbumListCreateView.as_view(),
-        name="artist-list-create-v1",
+        name="album-list-create-v1",
     ),
     path(
         "artists/",
         ArtistListCreateView.as_view(),
         name="artist-list-create-v1",
-    ),    
+    ),
+    path(
+        "artists/<int:pk>",
+        ArtistListCreateView.as_view(),
+        name="artist-detail-v1",
+    ),
+    path(
+        "languages/",
+        AlbumListCreateView.as_view(),
+        name="language-list-create-v1",
+    ),
     path(
         "playlists/",
         PlaylistListCreateView.as_view(),
