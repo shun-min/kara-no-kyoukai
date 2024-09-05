@@ -36,6 +36,16 @@ class ArtistListCreateView(generics.ListCreateAPIView):
     pagination_class = None
 
 
+class ArtistRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Artist.objects.all().order_by("id")
+    serializer_class = ArtistSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+    extra_args = {
+        "url": "artist-detail-v1",
+    }
+
+
 class SongListCreateView(generics.ListCreateAPIView):
     queryset = Song.objects.all().order_by("id")
     serializer_class = SongSerializer

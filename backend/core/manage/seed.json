@@ -14,6 +14,20 @@
   }
 },
 {
+  "model": "core.artist",
+  "pk": 3,
+  "fields": {
+    "name": "Of Monsters and Men"
+  }
+},
+{
+  "model": "core.artist",
+  "pk": 4,
+  "fields": {
+    "name": "My Head is an Animal"
+  }
+},
+{
   "model": "core.genre",
   "pk": 1,
   "fields": {
@@ -72,6 +86,36 @@
     "hitcounts": 0,
     "language": 3,
     "path": "/home/lam/Music/karaoke/mandarin/FeiYuChing-YiJianMei.mp4"
+  }
+},
+{
+  "model": "core.song",
+  "pk": 3,
+  "fields": {
+    "name": "Dirty Paws",
+    "album": null,
+    "artist": 3,
+    "genre": null,
+    "hitcounts": 0,
+    "language": 3,
+    "path": "/home/lam/Music/karaoke/japanese/Dirty_Paws-Of_Monsters_and_Men.mp4"
+  }
+},
+{
+  "model": "core.playlist",
+  "pk": 1,
+  "fields": {
+    "name": "MyPlaylist",
+    "type": "Recent"
+  }
+},
+{
+  "model": "core.playlistitem",
+  "pk": 2,
+  "fields": {
+    "song": 2,
+    "playlist": null,
+    "order": 2
   }
 }
 ]

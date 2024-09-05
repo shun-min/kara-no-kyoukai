@@ -3,6 +3,7 @@ from django.urls import path
 from core.api.v1.views import (
     AlbumListCreateView,
     ArtistListCreateView,
+    ArtistRetrieveUpdateDestroyView,
     SongListCreateView,
     PlaylistListCreateView,
     PlaylistItemRListCreateView,
@@ -23,7 +24,7 @@ urlpatterns = [
     ),
     path(
         "artists/<int:pk>",
-        ArtistListCreateView.as_view(),
+        ArtistRetrieveUpdateDestroyView.as_view(),
         name="artist-detail-v1",
     ),
     path(
