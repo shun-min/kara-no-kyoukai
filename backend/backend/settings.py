@@ -32,11 +32,11 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
     'core.apps.CoreConfig',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +128,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

@@ -77,7 +77,6 @@ class Playlist(models.Model):
 
 
 class PlaylistItem(models.Model):
-    name = models.CharField(max_length=100)
     song = models.ForeignKey(
         Song,
         on_delete=models.PROTECT,
@@ -96,4 +95,4 @@ class PlaylistItem(models.Model):
         unique_together = ('playlist', 'order')
     
     def __str__(self):
-        return str(f"{self.name} - {self.order}")
+        return str(f"{self.song.name} - {self.order}")
