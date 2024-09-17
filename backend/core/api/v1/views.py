@@ -16,6 +16,8 @@ from core.models import (
 from core.api.v1.serializers import (
     AlbumSerializer,
     ArtistSerializer,
+    GenreSerializer,
+    LanguageSerializer,
     SongSerializer,
     PlaylistSerializer,
     PlaylistItemSerializer,
@@ -23,6 +25,13 @@ from core.api.v1.serializers import (
 
 
 class AlbumListCreateView(generics.ListCreateAPIView):
+    queryset = Album.objects.all().order_by("id")
+    serializer_class = AlbumSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class AlbumRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Album.objects.all().order_by("id")
     serializer_class = AlbumSerializer
     filterset_fields = ['name']
@@ -41,9 +50,34 @@ class ArtistRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ArtistSerializer
     filterset_fields = ['name']
     pagination_class = None
-    extra_args = {
-        "url": "artist-detail-v1",
-    }
+
+
+class GenreListCreateView(generics.ListCreateAPIView):
+    queryset = Genre.objects.all().order_by("id")
+    serializer_class = GenreSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Genre.objects.all().order_by("id")
+    serializer_class = GenreSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class LanguageListCreateView(generics.ListCreateAPIView):
+    queryset = Language.objects.all().order_by("id")
+    serializer_class = LanguageSerializer
+    filterset_fields = ['name']
+    pagination_class = None
+
+
+class LanguageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Language.objects.all().order_by("id")
+    serializer_class = LanguageSerializer
+    filterset_fields = ['name']
+    pagination_class = None
 
 
 class SongListCreateView(generics.ListCreateAPIView):
@@ -68,11 +102,14 @@ class PlaylistListCreateView(generics.ListCreateAPIView):
     pagination_class = None
 
 
-# class Playlist(generics.RetrieveUpdateDestroyAPIView):
+class PlaylistRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Playlist.objects.all().order_by("id")
+    serializer_class = PlaylistSerializer
+    filterset_fields = ['name']
+    pagination_class = None
 
 
-
-class PlaylistItemRListCreateView(generics.ListCreateAPIView):
+class PlaylistItemListCreateView(generics.ListCreateAPIView):
     queryset = PlaylistItem.objects.all().order_by("id")
     serializer_class = PlaylistItemSerializer
     filterset_fields = ['playlist__id']

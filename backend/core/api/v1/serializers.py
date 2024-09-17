@@ -25,39 +25,71 @@ class AlbumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = "__all__"
+        extra_kwargs = {
+            "url": {
+                "view_name": "album-detail-v1",
+            }
+        }
 
 
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = "__all__"
+        extra_kwargs = {
+            "url": {
+                "view_name": "artist-detail-v1",
+            }
+        }
+
+
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = "__all__"
+        extra_kwargs = {
+            "url": {
+                "view_name": "genre-detail-v1",
+            }
+        }
+
+
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = "__all__"
+        extra_kwargs = {
+            "url": {
+                "view_name": "language-detail-v1",
+            }
+        }
 
 
 class SongSerializer(serializers.ModelSerializer):
-    album = ForeignKeySerializer(view_name="album-details-v1", read_only=True)
-    artist = ForeignKeySerializer(view_name="artist-details-v1", read_only=True)
-    genre = ForeignKeySerializer(view_name="genre-details-v1", read_only=True)
-    language = ForeignKeySerializer(view_name="language-details-v1", read_only=True)
+    album = ForeignKeySerializer(view_name="album-detail-v1", read_only=True)
+    artist = ForeignKeySerializer(view_name="artist-detail-v1", read_only=True)
+    genre = ForeignKeySerializer(view_name="genre-detail-v1", read_only=True)
+    language = ForeignKeySerializer(view_name="language-detail-v1", read_only=True)
     class Meta:
         model = Song
         fields = "__all__"
 
-    def validate(self, attrs):
-        if self.context["request"].method == "PUT" and self.instance:
-            name = attrs.get("name")
-            album = attrs.get("album", self.instance.album)
-            artist = attrs.get("artist", self.instance.artist)
-            language = attrs.get("language", self.instance.language)
-            if name != self.instance.name:
-                _ = Song.filter(
-                    name=name,
-                    album=album,
-                    artist=artist,
-                    language=language,
-                )
-            else:
-                raise serializers.ValidationError
-        return attrs
+    # def validate(self, attrs):
+    #     if self.context["request"].method == "PUT" and self.instance:
+    #         name = attrs.get("name")
+    #         album = attrs.get("album", self.instance.album)
+    #         artist = attrs.get("artist", self.instance.artist)
+    #         language = attrs.get("language", self.instance.language)
+    #         if name != self.instance.name:
+    #             _ = Song.filter(
+    #                 name=name,
+    #                 album=album,
+    #                 artist=artist,
+    #                 language=language,
+    #             )
+    #         else:
+    #             raise serializers.ValidationError
+    #     return attrs
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
@@ -66,15 +98,15 @@ class PlaylistSerializer(serializers.ModelSerializer):
         fields = "__all__"
         extra_kwargs = {
             "url": {
-                "view_name": "playlist-details-v1",
+                "view_name": "playlist-detail-v1",
             }
         }
 
 class PlaylistItemSerializer(serializers.ModelSerializer):
-    playlist = ForeignKeySerializer(view_name="playlist-details-v1", read_only=True)
+    playlist = ForeignKeySerializer(view_name="playlist-detail-v1", read_only=True)
     class Meta:
         model = PlaylistItem
         fields = "__all__"
         extra_kwargs = {
-            "url": {"view_name": "playlistitem-details-v1"},
+            "url": {"view_name": "playlistitem-detail-v1"},
         }
