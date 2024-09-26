@@ -41,12 +41,12 @@ urlpatterns = [
     path(
         "genres/",
         GenreListCreateView.as_view(),
-        name="language-list-create-v1",
+        name="genre-list-create-v1",
     ),
     path(
         "genres/<int:pk>/",
         GenreRetrieveUpdateDestroyView.as_view(),
-        name="language-detail-v1",
+        name="genre-detail-v1",
     ),
     path(
         "languages/",

@@ -55,28 +55,28 @@ class ArtistRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 class GenreListCreateView(generics.ListCreateAPIView):
     queryset = Genre.objects.all().order_by("id")
     serializer_class = GenreSerializer
-    filterset_fields = ['name']
+    filterset_fields = ['value']
     pagination_class = None
 
 
 class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Genre.objects.all().order_by("id")
     serializer_class = GenreSerializer
-    filterset_fields = ['name']
+    filterset_fields = ['value']
     pagination_class = None
 
 
 class LanguageListCreateView(generics.ListCreateAPIView):
     queryset = Language.objects.all().order_by("id")
     serializer_class = LanguageSerializer
-    filterset_fields = ['name']
+    filterset_fields = ['value']
     pagination_class = None
 
 
 class LanguageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Language.objects.all().order_by("id")
     serializer_class = LanguageSerializer
-    filterset_fields = ['name']
+    filterset_fields = ['value']
     pagination_class = None
 
 
