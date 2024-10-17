@@ -1,0 +1,57 @@
+[build-system]
+requires = [
+    "setuptools>=69",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kara-no-kyoukai"
+version = "2024.07.13"
+description = "Karaoke system"
+requires-python = ">=3.12.1"
+dependencies = [
+    "django==5.0.7",
+    "djangorestframework==3.15.2",
+    "django-filter==24.2",
+    "django-cors-headers==4.5.0",
+    "markdown",
+    "PyYAML",
+]
+
+[project.optional-dependencies]
+# must install for devs
+dev = [
+    "pre-commit==3.7.0",
+    "django-seed",
+]
+# only if you have a specific local use for them
+# or if you want to integrate them with your IDE
+dev-lint = ["ruff==0.3.7", "mypy==1.9.0"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.format]
+# Use single quotes for non-triple-quoted strings.
+quote-style = "single"
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint]
+# Enable most popular linting rules
+select = [
+    "E",   # pycodestyle
+    "F",   # Pyflakes
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "I",   # isort
+]
