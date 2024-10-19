@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <h1>Karaoke app</h1>
-      <Link href="/songs">Songs</Link>
-      {/* <Link href="/songlist"></Link> */}
+      <Link href="/songs">Search Songs by:</Link>
+      
     </>
   );
 }

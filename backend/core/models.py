@@ -8,6 +8,9 @@ class Album(models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Artist(models.Model):
     name = models.CharField(max_length=100)
@@ -38,17 +41,13 @@ class Song(models.Model):
         null=True,
         blank=True,
     )
-    artist = models.ForeignKey(
+    artist = models.ManyToManyField(
         Artist,
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True,
+        related_name="+",
     )
-    genre = models.ForeignKey(
+    genre = models.ManyToManyField(
         Genre,
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True,
+        related_name="+",
     )
     hitcounts = models.IntegerField(default=0)
     language = models.ForeignKey(
@@ -57,10 +56,20 @@ class Song(models.Model):
         null=True,
         blank=True,
     )
-    path = models.TextField()
+    with_voice = models.BooleanField(
+        default=False,
+    )
+    path = models.TextField(
+        null=True,
+        blank=True,
+    )
+    youtube_link = models.TextField(
+        null=True,
+        blank=True,
+    )
 
     class Meta:
-        unique_together = ('artist', 'name')
+        unique_together = ('name', 'album')
     
     def __str__(self):
         return self.name

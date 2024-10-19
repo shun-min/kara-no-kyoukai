@@ -26,7 +26,7 @@ urlpatterns = [
     path(
         "albums/<int:pk>/",
         AlbumRetrieveUpdateDestroyView.as_view(),
-        name="album-list-create-v1",
+        name="album-detail-v1",
     ),
     path(
         "artists/",

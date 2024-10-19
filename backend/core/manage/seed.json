@@ -1,5 +1,21 @@
 [
 {
+  "model": "core.album",
+  "pk": 1,
+  "fields": {
+    "name": "My Head Is an Animal",
+    "publication_year": null
+  }
+},
+{
+  "model": "core.album",
+  "pk": 2,
+  "fields": {
+    "name": "Stray Sheep",
+    "publication_year": 2018
+  }
+},
+{
   "model": "core.artist",
   "pk": 1,
   "fields": {
@@ -22,9 +38,9 @@
 },
 {
   "model": "core.artist",
-  "pk": 4,
+  "pk": 5,
   "fields": {
-    "name": "My Head is an Animal"
+    "name": "John Denver"
   }
 },
 {
@@ -39,6 +55,62 @@
   "pk": 2,
   "fields": {
     "value": "Mandarin-pop"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 3,
+  "fields": {
+    "value": "Country"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 4,
+  "fields": {
+    "value": "Funk"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 5,
+  "fields": {
+    "value": "Indie Rock"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 6,
+  "fields": {
+    "value": "Indie Pop"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 7,
+  "fields": {
+    "value": "Indie Folk"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 8,
+  "fields": {
+    "value": "Folk"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 9,
+  "fields": {
+    "value": "Rock"
+  }
+},
+{
+  "model": "core.genre",
+  "pk": 10,
+  "fields": {
+    "value": "Mandarin Classics"
   }
 },
 {
@@ -67,12 +139,19 @@
   "pk": 1,
   "fields": {
     "name": "Lemon",
-    "album": null,
-    "artist": 1,
-    "genre": 1,
+    "album": 2,
     "hitcounts": 0,
     "language": 2,
-    "path": "/home/lam/Music/karaoke/japanese/KenshiYonezu-Lemon.mp4"
+    "with_voice": false,
+    "path": "/home/lam/Music/karaoke/japanese/KenshiYonezu-Lemon.mp4",
+    "youtube_link": "",
+    "artist": [
+      1
+    ],
+    "genre": [
+      1,
+      4
+    ]
   }
 },
 {
@@ -81,11 +160,17 @@
   "fields": {
     "name": "Yi Jian Mei",
     "album": null,
-    "artist": 2,
-    "genre": 2,
     "hitcounts": 0,
     "language": 3,
-    "path": "/home/lam/Music/karaoke/mandarin/FeiYuChing-YiJianMei.mp4"
+    "with_voice": false,
+    "path": "/home/lam/Music/karaoke/mandarin/FeiYuChing-YiJianMei.mp4",
+    "youtube_link": "",
+    "artist": [
+      2
+    ],
+    "genre": [
+      10
+    ]
   }
 },
 {
@@ -93,12 +178,20 @@
   "pk": 3,
   "fields": {
     "name": "Dirty Paws",
-    "album": null,
-    "artist": 3,
-    "genre": null,
+    "album": 1,
     "hitcounts": 0,
-    "language": 3,
-    "path": "/home/lam/Music/karaoke/japanese/Dirty_Paws-Of_Monsters_and_Men.mp4"
+    "language": 1,
+    "with_voice": false,
+    "path": "/home/lam/Music/karaoke/japanese/Dirty_Paws-Of_Monsters_and_Men.mp4",
+    "youtube_link": "",
+    "artist": [
+      3
+    ],
+    "genre": [
+      5,
+      6,
+      7
+    ]
   }
 },
 {
