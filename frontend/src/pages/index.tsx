@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <h1>Karaoke app</h1>
-      <Link href="/songs">Search Songs by:</Link>
-      
+      <h2>Search Songs by:</h2>
+      <Link href="/artists">Artists</Link>
     </>
   );
 }

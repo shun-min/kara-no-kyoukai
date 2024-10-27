@@ -1,3 +1,3 @@
-export default function About() {
+export default function Artists() {
   return <div>Artists</div>
 }
