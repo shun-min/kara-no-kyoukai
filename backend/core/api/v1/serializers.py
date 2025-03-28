@@ -88,9 +88,9 @@ class SongSerializer(serializers.ModelSerializer):
 
     def run_validation(self, attrs):
         errors = {}
-        valid_artists = []
-        artist = attrs.get("artist", self.instance.artist)
 
+        valid_artists = []
+        artist = attrs.get("artist")
         if artist:
             artist_ids = [int(id) for id in artist.split(",")]
             artist_instances = Artist.objects.in_bulk(artist_ids)
@@ -110,22 +110,26 @@ class SongSerializer(serializers.ModelSerializer):
 
             attrs["artist"] = valid_artists
         
+        language_id = attrs.get("language")
+        if language_id:
+            language_instance = Language.objects.filter(id=language_id)
+            if not language_instance.exists():
+                errors["language"] = "Invalid language ID"
+            else:
+                attrs["language"] = language_instance.first()
+
+        album_id = attrs.get("album")
+        if album_id:
+            album_instance = Language.objects.filter(id=album_id)
+            if not album_instance.exists():
+                errors["album"] = "Invalid album ID"
+            else:
+                attrs["album"] = album_instance.first()
+        
         if errors:
             raise serializers.ValidationError
         
         return attrs
-        # if self.context["request"].method == "PUT" and self.instance:
-        #     album = attrs.get("album", self.instance.album)
-        #     language = attrs.get("language", self.instance.language)
-        #     if name != self.instance.name:
-        #         _ = Song.filter(
-        #             name=name,
-        #             album=album,
-        #             artist=artist,
-        #             language=language,
-        #         )
-        #     else:
-        #         raise serializers.ValidationError
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
@@ -147,3 +151,38 @@ class PlaylistItemSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "url": {"view_name": "playlistitem-detail-v1"},
         }
+    
+    def run_validation(self, attrs):
+        errors = {}
+        if self.context["request"].method == "POST":
+            required_fields = [
+                "song",
+                "playlist",
+                "order",
+            ]
+            for field in required_fields:
+                if not attrs.get(field) or attrs.get(field) is None:
+                    errors[field] = f"{field} is required"
+            if errors:
+                raise serializers.ValidationError(errors)
+        
+        song_id = attrs.get("song")
+        if song_id:
+            song_instance = Song.objects.filter(id=song_id)
+            if not song_instance.exists():
+                errors["song"] = "Invalid song ID"
+            else:
+                attrs["song"] = song_instance.first()
+        
+        playlist_id = attrs.get("playlist")
+        if playlist_id:
+            playlist_instance = Playlist.objects.filter(id=playlist_id)
+            if not playlist_instance.exists():
+                errors["playlist"] = "Invalid playlist ID"
+            else:
+                attrs["playlist"] = playlist_instance.first()
+
+        if errors:
+            raise serializers.ValidationError(errors)
+        
+        return attrs

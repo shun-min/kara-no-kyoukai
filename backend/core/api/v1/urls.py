@@ -66,7 +66,7 @@ urlpatterns = [
     path(
         "playlist/<int:pk>/",
         PlaylistListCreateView.as_view(),
-        name="playlist-details-v1",
+        name="playlist-detail-v1",
     ),
     path(
         "playlistitem/",
@@ -76,7 +76,7 @@ urlpatterns = [
     path(
         "playlistitem/<int:pk>/",
         PlaylistItemRetrieveUpdateDestroyView.as_view(),
-        name="playlistitem-details-v1",
+        name="playlistitem-detail-v1",
     ),
     path(
         "songs/",
