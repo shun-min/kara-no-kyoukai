@@ -3,7 +3,7 @@
 2. Execute the following lines:
 ```
 pyenv local 3.12.1
-python -m pip venv env
+python -m venv env
 source env/bin/activate
 env/bin/python -m pip install -e .
 env/bin/python -m pip install -e .[dev]
