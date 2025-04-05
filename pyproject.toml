@@ -30,6 +30,11 @@ dev = [
 # or if you want to integrate them with your IDE
 dev-lint = ["ruff==0.3.7", "mypy==1.9.0"]
 
+[tool.setuptools.packages.find]
+where = ["backend"]
+include = ["core", "backend"]
+namespaces = false
+
 [tool.ruff]
 target-version = "py312"
 

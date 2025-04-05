@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "name": "My Head Is an Animal",
-    "publication_year": null
+    "publication_year": 2011
   }
 },
 {
@@ -13,6 +13,22 @@
   "fields": {
     "name": "Stray Sheep",
     "publication_year": 2018
+  }
+},
+{
+  "model": "core.album",
+  "pk": 3,
+  "fields": {
+    "name": "Native",
+    "publication_year": 2012
+  }
+},
+{
+  "model": "core.album",
+  "pk": 4,
+  "fields": {
+    "name": "Test",
+    "publication_year": null
   }
 },
 {
@@ -41,6 +57,13 @@
   "pk": 5,
   "fields": {
     "name": "John Denver"
+  }
+},
+{
+  "model": "core.artist",
+  "pk": 6,
+  "fields": {
+    "name": "One Republic"
   }
 },
 {
@@ -114,6 +137,13 @@
   }
 },
 {
+  "model": "core.genre",
+  "pk": 11,
+  "fields": {
+    "value": "English Pop"
+  }
+},
+{
   "model": "core.language",
   "pk": 1,
   "fields": {
@@ -183,7 +213,7 @@
     "language": 1,
     "with_voice": false,
     "path": "/home/lam/Music/karaoke/japanese/Dirty_Paws-Of_Monsters_and_Men.mp4",
-    "youtube_link": "",
+    "youtube_link": "https://www.youtube.com/watch?v=T3igi1q5dwk",
     "artist": [
       3
     ],
@@ -191,6 +221,26 @@
       5,
       6,
       7
+    ]
+  }
+},
+{
+  "model": "core.song",
+  "pk": 4,
+  "fields": {
+    "name": "Counting Stars",
+    "album": 3,
+    "hitcounts": 0,
+    "language": 1,
+    "with_voice": false,
+    "path": "",
+    "youtube_link": "https://www.youtube.com/watch?v=3EG3CfTv4lQ",
+    "artist": [
+      6
+    ],
+    "genre": [
+      9,
+      11
     ]
   }
 },
@@ -206,9 +256,27 @@
   "model": "core.playlistitem",
   "pk": 2,
   "fields": {
+    "song": 4,
+    "playlist": 1,
+    "order": 1
+  }
+},
+{
+  "model": "core.playlistitem",
+  "pk": 3,
+  "fields": {
     "song": 2,
-    "playlist": null,
+    "playlist": 1,
     "order": 2
+  }
+},
+{
+  "model": "core.playlistitem",
+  "pk": 4,
+  "fields": {
+    "song": 1,
+    "playlist": 1,
+    "order": 3
   }
 }
 ]
