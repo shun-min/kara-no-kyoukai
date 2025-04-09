@@ -32,6 +32,14 @@
   }
 },
 {
+  "model": "core.album",
+  "pk": 5,
+  "fields": {
+    "name": "Leftoverture",
+    "publication_year": null
+  }
+},
+{
   "model": "core.artist",
   "pk": 1,
   "fields": {
@@ -64,6 +72,13 @@
   "pk": 6,
   "fields": {
     "name": "One Republic"
+  }
+},
+{
+  "model": "core.artist",
+  "pk": 7,
+  "fields": {
+    "name": "Kansas"
   }
 },
 {
@@ -172,9 +187,9 @@
     "album": 2,
     "hitcounts": 0,
     "language": 2,
-    "with_voice": false,
+    "with_voice": true,
     "path": "/home/lam/Music/karaoke/japanese/KenshiYonezu-Lemon.mp4",
-    "youtube_link": "",
+    "youtube_link": "https://www.youtube.com/watch?v=pvc2MIM2zpY&list=RDpvc2MIM2zpY&start_radio=1",
     "artist": [
       1
     ],
@@ -192,9 +207,9 @@
     "album": null,
     "hitcounts": 0,
     "language": 3,
-    "with_voice": false,
+    "with_voice": true,
     "path": "/home/lam/Music/karaoke/mandarin/FeiYuChing-YiJianMei.mp4",
-    "youtube_link": "",
+    "youtube_link": "https://www.youtube.com/watch?v=VKq2flvS7dw&list=RDVKq2flvS7dw&start_radio=1",
     "artist": [
       2
     ],
@@ -241,6 +256,25 @@
     "genre": [
       9,
       11
+    ]
+  }
+},
+{
+  "model": "core.song",
+  "pk": 5,
+  "fields": {
+    "name": "Carry on Wayward Son",
+    "album": 5,
+    "hitcounts": 0,
+    "language": 1,
+    "with_voice": true,
+    "path": "",
+    "youtube_link": "https://www.youtube.com/watch?v=uwz3o5GNDTA&list=RDuwz3o5GNDTA&start_radio=1",
+    "artist": [
+      7
+    ],
+    "genre": [
+      9
     ]
   }
 },

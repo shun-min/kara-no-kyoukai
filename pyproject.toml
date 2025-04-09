@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "kara-no-kyoukai"
 version = "2024.07.13"
-description = "Karaoke system"
+description = "Karaoke system powered by Youtube"
 requires-python = ">=3.12.1"
 dependencies = [
     "django==5.0.7",
@@ -31,7 +31,7 @@ dev = [
 dev-lint = ["ruff==0.3.7", "mypy==1.9.0"]
 
 [tool.setuptools.packages.find]
-where = ["backend"]
+where = ["karaoke-django"]
 include = ["core", "backend"]
 namespaces = false
 
