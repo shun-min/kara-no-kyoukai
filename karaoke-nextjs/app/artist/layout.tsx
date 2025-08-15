@@ -3,5 +3,5 @@ export default function GenericLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <section>Test{children}</section>
+  return <section>{children}</section>
 }
