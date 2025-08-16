@@ -1,17 +1,16 @@
-
-export default async function ArtistsPage() {
+export default async function Playlist() {
   const host = "http://localhost:8000/karaoke/api/";
-  const url = host + "v1/artists/";
-  const artists = await fetch(url)
+  const url = host + "v1/playlistitem/";
+  const p_items = await fetch(url)
   .then((response) => {
     const res = response.json();
     return res;
   })
   return (
     <>
-      <h1>Artist page</h1>
+      <h1>Your Playlist</h1>
       {
-        artists.map((a: any) => 
+        p_items.map((a: any) => 
           <div key={a.id}>
             {a.name}
           </div>
@@ -20,4 +19,3 @@ export default async function ArtistsPage() {
     </>
   );
 };
-  

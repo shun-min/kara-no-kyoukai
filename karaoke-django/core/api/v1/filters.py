@@ -1,7 +1,6 @@
 import django_filters
-from django_filters import rest_framework
 from django.db.models import QuerySet
-
+from django_filters import rest_framework
 from rest_framework import generics
 
 from core.models import (

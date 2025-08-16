@@ -85,98 +85,98 @@
   "model": "core.genre",
   "pk": 1,
   "fields": {
-    "value": "J-pop"
+    "name": "J-pop"
   }
 },
 {
   "model": "core.genre",
   "pk": 2,
   "fields": {
-    "value": "Mandarin-pop"
+    "name": "Mandarin-pop"
   }
 },
 {
   "model": "core.genre",
   "pk": 3,
   "fields": {
-    "value": "Country"
+    "name": "Country"
   }
 },
 {
   "model": "core.genre",
   "pk": 4,
   "fields": {
-    "value": "Funk"
+    "name": "Funk"
   }
 },
 {
   "model": "core.genre",
   "pk": 5,
   "fields": {
-    "value": "Indie Rock"
+    "name": "Indie Rock"
   }
 },
 {
   "model": "core.genre",
   "pk": 6,
   "fields": {
-    "value": "Indie Pop"
+    "name": "Indie Pop"
   }
 },
 {
   "model": "core.genre",
   "pk": 7,
   "fields": {
-    "value": "Indie Folk"
+    "name": "Indie Folk"
   }
 },
 {
   "model": "core.genre",
   "pk": 8,
   "fields": {
-    "value": "Folk"
+    "name": "Folk"
   }
 },
 {
   "model": "core.genre",
   "pk": 9,
   "fields": {
-    "value": "Rock"
+    "name": "Rock"
   }
 },
 {
   "model": "core.genre",
   "pk": 10,
   "fields": {
-    "value": "Mandarin Classics"
+    "name": "Mandarin Classics"
   }
 },
 {
   "model": "core.genre",
   "pk": 11,
   "fields": {
-    "value": "English Pop"
+    "name": "English Pop"
   }
 },
 {
   "model": "core.language",
   "pk": 1,
   "fields": {
-    "value": "English"
+    "name": "English"
   }
 },
 {
   "model": "core.language",
   "pk": 2,
   "fields": {
-    "value": "Japanese"
+    "name": "Japanese"
   }
 },
 {
   "model": "core.language",
   "pk": 3,
   "fields": {
-    "value": "Mandarin"
+    "name": "Mandarin"
   }
 },
 {
