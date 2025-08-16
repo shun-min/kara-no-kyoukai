@@ -13,6 +13,7 @@ from core.api.v1.views import (
     PlaylistItemRetrieveUpdateDestroyView,
     PlaylistListCreateView,
     PlaylistRetrieveUpdateDestroyView,
+
     SongListCreateView,
     SongRetrieveUpdateDestroyView,
 )
@@ -64,7 +65,7 @@ urlpatterns = [
         name="playlist-list-create-v1",
     ),
     path(
-        "playlist/<int:pk>/",
+        "playlists/<int:pk>/",
         PlaylistRetrieveUpdateDestroyView.as_view(),
         name="playlist-detail-v1",
     ),

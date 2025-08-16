@@ -23,12 +23,12 @@ dependencies = [
 [project.optional-dependencies]
 # must install for devs
 dev = [
-    "pre-commit==3.7.0",
+    "pre-commit>=4.3.0",
     "django-seed",
 ]
 # only if you have a specific local use for them
 # or if you want to integrate them with your IDE
-dev-lint = ["ruff==0.3.7", "mypy==1.9.0"]
+dev-lint = ["ruff==0.12.9", "mypy==1.9.0"]
 
 [tool.setuptools.packages.find]
 where = ["karaoke-django"]
