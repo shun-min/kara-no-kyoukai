@@ -39,3 +39,9 @@ python manage.py loaddata core/manage/seed.json
 cd karaoke-django
 python manage.py dumpdata core --indent 2 > core/manage/seed.json
 ```
+
+### Setup env for frontend
+```
+cd karaoke-django
+npm install
+```
