@@ -1,3 +1,5 @@
+import Card from '../../components/card';
+
 export default async function ArtistsPage() {
   const host = "http://localhost:8000/karaoke/api/";
   const url = host + "v1/artists/";
@@ -11,9 +13,11 @@ export default async function ArtistsPage() {
       <h1>Artist page</h1>
       {
         artists.map((a: any) => 
-          <div key={a.id}>
-            {a.name}
-          </div>
+          <Card
+            key={a.id}
+            title={ a.name }
+            url={ "/artist/" + a.id }
+          />
         )
       }
     </>

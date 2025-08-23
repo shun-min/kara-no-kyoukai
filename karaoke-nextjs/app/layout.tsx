@@ -28,8 +28,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-        <Playlist />
+        <h1>Karaoke App</h1>
+        <div className='inline-block justify-end'>
+          {children}
+        </div>
+        <div className='inline-block justify-end'>
+          <Playlist/>
+        </div>
       </body>
     </html>
   );
