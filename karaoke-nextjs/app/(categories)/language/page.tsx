@@ -1,3 +1,5 @@
+import Card from '../../components/card';
+
 export default async function LanguagePage() {
   const host = "http://localhost:8000/karaoke/api/";
   const url = host + "v1/languages/";
@@ -10,10 +12,12 @@ export default async function LanguagePage() {
     <>
       <h1>Languages</h1>
       {
-        languages.map((g: any) => 
-          <div key={g.id}>
-            {g.name}
-          </div>
+        languages.map((l: any) => 
+          <Card
+            key={l.id}
+            title={ l.name }
+            url={ "/song"}
+          />
         )
       }
     </>
