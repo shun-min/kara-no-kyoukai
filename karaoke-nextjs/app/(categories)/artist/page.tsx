@@ -16,7 +16,7 @@ export default async function ArtistsPage() {
           <Card
             key={a.id}
             title={ a.name }
-            url={ "/songs/?artist/" + a.id }
+            url={ "/song/artist_" + a.name }
           />
         )
       }

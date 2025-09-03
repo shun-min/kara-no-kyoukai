@@ -16,7 +16,7 @@ export default async function LanguagePage() {
           <Card
             key={l.id}
             title={ l.name }
-            url={ "/song"}
+            url={ "/song/language_" + l.name}
           />
         )
       }

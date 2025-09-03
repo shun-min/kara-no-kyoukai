@@ -16,7 +16,7 @@ export default async function GenrePage() {
           <Card
             key={g.id}
             title={g.name}
-            url={"/song" }
+            url={"/song/genre_" + g.name }
           />
         )
       }
