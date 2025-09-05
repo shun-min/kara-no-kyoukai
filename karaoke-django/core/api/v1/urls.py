@@ -13,7 +13,6 @@ from core.api.v1.views import (
     PlaylistItemRetrieveUpdateDestroyView,
     PlaylistListCreateView,
     PlaylistRetrieveUpdateDestroyView,
-
     SongListCreateView,
     SongRetrieveUpdateDestroyView,
 )

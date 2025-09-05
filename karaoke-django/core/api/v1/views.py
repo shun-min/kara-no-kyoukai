@@ -1,9 +1,9 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-# from core.api.v1.filters import (
-#     SongFilter,
-# )
+from core.api.v1.filters import (
+    SongFilter,
+)
 from core.api.v1.serializers import (
     AlbumSerializer,
     ArtistSerializer,
@@ -83,7 +83,7 @@ class LanguageRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 class SongListCreateView(generics.ListCreateAPIView):
     queryset = Song.objects.all().order_by("id")
     serializer_class = SongSerializer
-    # filterset_class = SongFilter
+    filterset_class = SongFilter
     filterset_fields = ['name']
     pagination_class = None
 
