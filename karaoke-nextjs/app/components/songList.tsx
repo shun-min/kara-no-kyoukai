@@ -1,10 +1,22 @@
-import Card from './card';
+"use client"
+
+import { useEffect, useState } from 'react';
+import SongCard from "./songCard";
+
+interface PlaylistData
+  next_order: integer
+  playlist: Object
 
 export default async function SongList(
     { category, categoryVal }: any
 ) {
+  let pl_url = 'http://localhost:8000/karaoke/api/v1/playlists/?name="My Playlist"';
+  const [playlist , setPlaylist] = useState({});
+  useEffect(() => {
+    data
+  }, [pl_url, playlist_data]);
+
   const url = "http://localhost:8000/karaoke/api/v1/songs/?" + category + "=" + categoryVal;
-  console.log("url=", url)
   const songs = await fetch(url)
     .then((response) => {
       const res = response.json();
@@ -15,10 +27,9 @@ export default async function SongList(
     <>
     {
       songs.map((s:any) => 
-        <Card 
-          key={s.id}
-          title={s.name}
-          url={"/song"}
+        <SongCard 
+          songId={s.id}
+          songName={s.name}
         />
       )
     }
