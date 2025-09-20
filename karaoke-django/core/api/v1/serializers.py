@@ -144,6 +144,7 @@ class PlaylistSerializer(serializers.ModelSerializer):
 
 
 class PlaylistItemSerializer(serializers.ModelSerializer):
+    song = ForeignKeySerializer(view_name="song-detail-v1", read_only=True)
     playlist = ForeignKeySerializer(view_name="playlist-detail-v1", read_only=True)
     class Meta:
         model = PlaylistItem

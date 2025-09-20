@@ -1,3 +1,4 @@
+import PlaylistEntry from "./playlist_entry";
 
 var host = "http://localhost:8000/karaoke/api/";
 function findActivePlaylist() {
@@ -51,6 +52,9 @@ export default async function Playlist() {
         key={activePlaylist["id"]}
       >
         {activePlaylist['name']}
+      </div>
+      <div>
+        <PlaylistEntry></PlaylistEntry>
       </div>
     </>
   );
