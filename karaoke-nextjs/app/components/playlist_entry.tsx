@@ -12,7 +12,6 @@ async function getPlaylistItems() {
 
 export default async function PlaylistEntry() {
   const entries = await getPlaylistItems();
-  console.log(entries);
   return (
     <>
     {

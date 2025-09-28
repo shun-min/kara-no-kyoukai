@@ -1,39 +1,30 @@
-"use client"
-
-import { useEffect, useState } from 'react';
 import SongCard from "./songCard";
 
-interface PlaylistData {
-  id: number
-}
 
-async function fetchPlaylist() {
-  let pl_url = 'http://localhost:8000/karaoke/api/v1/playlists/?name="My Playlist"';
-  console.log("Fetch playlist")
-  const playlist = await fetch(pl_url)
+async function getLatestOrderNum() {
+  const url = "http://localhost:8000/karaoke/api/v1/playlistitem/?playlist=4";
+  const playlist_items = await fetch(url)
     .then((response) => {
       const res = response.json();
       return res;
     })
-  return playlist
+  console.log("!!!!!")
+  console.log(playlist_items.length)
+  return playlist_items.length
 }
 
 export default async function SongList(
     { category, categoryVal }: any
 ) {
-  let playlist = fetchPlaylist();
-  useEffect(() => {
-    return () => {
-
-    };
-  }, []);
-
   const url = "http://localhost:8000/karaoke/api/v1/songs/?" + category + "=" + categoryVal;
   const songs = await fetch(url)
     .then((response) => {
       const res = response.json();
       return res;
     })
+  // let order = getLatestOrderNum();
+  let order = 2;
+  console.log(">>>", order);
 
   return(
     <>
@@ -42,7 +33,7 @@ export default async function SongList(
         <SongCard 
           songId={s.id}
           songName={s.name}
-          playlistId={playlist}
+          playlistOrder={order}
         />
       )
     }
