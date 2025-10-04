@@ -1,15 +1,12 @@
 import SongCard from "./songCard";
 
-
 async function getLatestOrderNum() {
   const url = "http://localhost:8000/karaoke/api/v1/playlistitem/?playlist=4";
   const playlist_items = await fetch(url)
     .then((response) => {
-      const res = response.json();
-      return res;
+      const result = response.json();
+      return result
     })
-  console.log("!!!!!")
-  console.log(playlist_items.length)
   return playlist_items.length
 }
 
@@ -22,9 +19,7 @@ export default async function SongList(
       const res = response.json();
       return res;
     })
-  // let order = getLatestOrderNum();
-  let order = 2;
-  console.log(">>>", order);
+  let orderNum = await getLatestOrderNum();
 
   return(
     <>
@@ -33,7 +28,7 @@ export default async function SongList(
         <SongCard 
           songId={s.id}
           songName={s.name}
-          playlistOrder={order}
+          playlist_length={orderNum}
         />
       )
     }
