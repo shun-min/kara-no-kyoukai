@@ -1,5 +1,4 @@
 "use client"
-import next from "next";
 import { useState } from "react";
 
 function updatePlaylist(

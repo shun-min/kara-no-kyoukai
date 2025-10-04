@@ -1,31 +1,25 @@
 
-async function getPlaylistItems() {
-  const host = "http://localhost:8000/karaoke/api/";
-  const url = host + "v1/playlistitem/?playlist=4";
-  const entries = fetch(url)
-    .then((response) => {
-      const res = response.json();
-      return res;
-    })
-  return entries;
+function removeEntry(order: number) {
+  console.log("remove ", order)
 }
 
-export default async function PlaylistEntry() {
-  const entries = await getPlaylistItems();
+export default async function PlaylistEntry(
+  {songId, songName, order}: any
+) {
   return (
     <>
-    {
-      entries.map((e:any) => 
-      <div
-        // className={"flex justify-end m-10"}
-        key={e["id"]}
-      >
-        <li>
-          {e['song']['name']}
-        </li>
+      <div className="flex gap-x-2 m-2">
+        <button
+          key={songId}
+        >
+          {songName}
+        </button>
+        <button
+          key={order}
+          onClick={removeEntry(order=order)}
+        > - 
+        </button>
       </div>
-      )
-    }
     </>
   );
 };
