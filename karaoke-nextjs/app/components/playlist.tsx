@@ -71,6 +71,8 @@ export default async function Playlist() {
         <PlaylistEntry
           songId={e["song"]["id"]}
           songName={e["song"]["name"]}
+          path={e["path"]}
+          link={e["youtube_link"]}
           entryId={e["id"]}
           order={e["order"]}
         />

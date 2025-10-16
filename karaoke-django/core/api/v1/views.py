@@ -84,7 +84,7 @@ class SongListCreateView(generics.ListCreateAPIView):
     queryset = Song.objects.all().order_by("id")
     serializer_class = SongSerializer
     filterset_class = SongFilter
-    filterset_fields = ['name']
+    # filterset_fields = ['name']
     pagination_class = None
 
 

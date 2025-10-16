@@ -1,4 +1,6 @@
 "use client"
+import Link from 'next/link';
+
 
 function removePlaylistItem(
   entryId: number
@@ -20,23 +22,33 @@ function removePlaylistItem(
   return success;
 }
 
+function storePathInStorage(
+  songId: number,
+  src_path: string,
+){
+  // localStorage.setItem("currSong", src_path);
+  localStorage.setItem("currSong", "https://www.youtube.com/watch?v=pvc2MIM2zpY&list=RDpvc2MIM2zpY&start_radio=1");
+  // get 2nd window, play song
+}
+
 export default function PlaylistEntry(
-  {songId, songName, entryId, order}: any
+  {songId, songName, path, link, entryId, order}: any
 ) {
   function removeEntry(order: number) {
-    console.log("remove ", order);
     const success = removePlaylistItem(entryId=entryId);
   }
 
+  let src_path = link ? link : path;
   return (
     <>
       <div className="flex gap-x-2 m-2">
-        <button key={entryId}>
+        
+        <button key={entryId} onClick={
+          () => storePathInStorage(songId=songId, src_path=src_path)}
+        >
           {songName}
         </button>
-        <button key={entryId} onClick={() => removeEntry(order=order)}>
-          -
-        </button>
+        <button key={entryId} onClick={() => removeEntry(order=order)}></button>
       </div>
     </>
   );
