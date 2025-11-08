@@ -8,22 +8,22 @@ from core.models import (
 
 
 class SongFilter(rest_framework.FilterSet):
-    language = filters.CharFilter(
+    language = filters.NumberFilter(
         method="getSongByLanguage",
         label="Song Language",
         distinct=True,
     )
-    artist = filters.CharFilter(
+    artist = filters.NumberFilter(
         method="getSongByArtist",
         label="Song Artist",
         distinct=True,
     )
-    genre = filters.CharFilter(
+    genre = filters.NumberFilter(
         method="getSongByGenre",
         label="Song Genre",
         distinct=True,
     )
-    genre = filters.CharFilter(
+    album = filters.NumberFilter(
         method="getSongByAlbum",
         label="Song Album",
         distinct=True,
@@ -36,19 +36,14 @@ class SongFilter(rest_framework.FilterSet):
             'name',
         ]
 
-    def getSongByLanguage(
-        self,
-        queryset: QuerySet,
-        name,
-        value:str,
-    ):
-        return queryset.filter(language__name=value)
+    def getSongByLanguage(self, queryset: QuerySet, name, value: int):
+        return queryset.filter(language__id=value)
         
-    def getSongByArtist(self, queryset: QuerySet, name, value: str):
-        return queryset.filter(artist__name=value)
+    def getSongByArtist(self, queryset: QuerySet, name, value: int):
+        return queryset.filter(artist__id=value)
     
-    def getSongByGenre(self, queryset: QuerySet, name, value: str):
-        return queryset.filter(genre__name=value)
+    def getSongByGenre(self, queryset: QuerySet, name, value: int):
+        return queryset.filter(genre__id=value)
 
-    def getSongByAlbum(self, queryset: QuerySet, name, value: str):
-        return queryset.filter(album__name=value)
+    def getSongByAlbum(self, queryset: QuerySet, name, value: int):
+        return queryset.filter(album__id=value)

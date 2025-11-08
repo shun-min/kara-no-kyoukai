@@ -9,12 +9,25 @@ from core.models import (
     PlaylistItem,
     Song,
 )
-# Register your models here.
 
-admin.site.register(Album)
+
+# Register your models here.
+class AlbumFields(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+    )
+admin.site.register(Album, AlbumFields)
+
 admin.site.register(Artist)
 admin.site.register(Genre)
-admin.site.register(Language)
+
+class LanguageFields(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+    )
+admin.site.register(Language, LanguageFields)
 
 class PlaylistFields(admin.ModelAdmin):
     list_display = (

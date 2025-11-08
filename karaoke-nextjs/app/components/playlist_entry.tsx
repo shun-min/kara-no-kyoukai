@@ -1,6 +1,4 @@
 "use client"
-import Link from 'next/link';
-
 
 function removePlaylistItem(
   entryId: number
@@ -23,7 +21,6 @@ function removePlaylistItem(
 }
 
 function storePathInStorage(
-  songId: number,
   src_path: string,
 ){
   // localStorage.setItem("currSong", src_path);
@@ -32,7 +29,7 @@ function storePathInStorage(
 }
 
 export default function PlaylistEntry(
-  {songId, songName, path, link, entryId, order}: any
+  {song, songName, path, link, entryId, order}: any
 ) {
   function removeEntry(order: number) {
     const success = removePlaylistItem(entryId=entryId);
@@ -43,12 +40,12 @@ export default function PlaylistEntry(
     <>
       <div className="flex gap-x-2 m-2">
         
-        <button key={entryId} onClick={
-          () => storePathInStorage(songId=songId, src_path=src_path)}
+        <button key={order} onClick={
+          () => storePathInStorage(src_path=src_path)}
         >
-          {songName}
+          {entryId} {order} {songName}
         </button>
-        <button key={entryId} onClick={() => removeEntry(order=order)}></button>
+        <button key={entryId} onClick={() => removeEntry(order=order)}>-</button>
       </div>
     </>
   );
