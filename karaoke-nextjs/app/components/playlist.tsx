@@ -69,12 +69,10 @@ export default async function Playlist() {
 
       {entries.map((e:any) => 
         <PlaylistEntry
-          key={e["id"]}
           entryId={e["id"]}
-          songId={e["song"]["id"]}
           songName={e["song"]["name"]}
-          path={e["path"]}
-          link={e["youtube_link"]}
+          path={e["song"]["path"]}
+          link={e["song"]["youtube_link"]}
           order={e["order"]}
         >
         </PlaylistEntry>

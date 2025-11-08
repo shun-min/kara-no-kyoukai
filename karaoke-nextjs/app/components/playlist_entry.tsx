@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react";
+
 function removePlaylistItem(
   entryId: number
 ) {
@@ -20,32 +22,28 @@ function removePlaylistItem(
   return success;
 }
 
-function storePathInStorage(
-  src_path: string,
-){
-  // localStorage.setItem("currSong", src_path);
-  localStorage.setItem("currSong", "https://www.youtube.com/watch?v=pvc2MIM2zpY&list=RDpvc2MIM2zpY&start_radio=1");
-  // get 2nd window, play song
+export default function PlaylistEntry(
+  {entryId, songName, path, link, order}: any
+) {
+  let src_path = link ? link : path;
+
+  function playSong(
+    src_path: string,
+  ){
+    localStorage.setItem("currSong", src_path);
+    console.log("stored: ", src_path);
 }
 
-export default function PlaylistEntry(
-  {song, songName, path, link, entryId, order}: any
-) {
-  function removeEntry(order: number) {
-    const success = removePlaylistItem(entryId=entryId);
-  }
-
-  let src_path = link ? link : path;
   return (
     <>
       <div className="flex gap-x-2 m-2">
         
         <button key={order} onClick={
-          () => storePathInStorage(src_path=src_path)}
+          () => playSong(src_path=src_path)}
         >
-          {entryId} {order} {songName}
+          {order} {songName}
         </button>
-        <button key={entryId} onClick={() => removeEntry(order=order)}>-</button>
+        <button key={entryId} onClick={() => removePlaylistItem(entryId=entryId)}>-</button>
       </div>
     </>
   );

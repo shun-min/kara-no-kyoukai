@@ -1,33 +1,29 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-
-let isPlaying = false;
-
-function getSelectedSongPath() {
-  let song = localStorage.getItem("currSong");
-  if (song === null) {
-    return "";
-  }
-  isPlaying = true;
-  return song;
-};
 
 function MediaPlayer() {
-  let srcPath = "";
-  useEffect(() => {
-    if (isPlaying === false && srcPath != "") {
+  const [activeSong, setActiveSong] = useState("");
+  
+  function checkActiveSong() {
+    if (localStorage.getItem("currSong") === null) {
       return;
+    } else {
+      let srcPath = localStorage.getItem("currSong");
+      setActiveSong(srcPath);
     }
-    srcPath = getSelectedSongPath();
   }
-  , [isPlaying, srcPath]);
 
-  if (isPlaying) {
+  useEffect(() => {
+    checkActiveSong();
+  }
+  , []);
+
+  if (activeSong != null) {
     return (
       <>
-        {srcPath}
-        {/* <video src={srcPath} autoPlay></video> */}
+        {activeSong}
+        {/* <video src={activeSong} autoPlay></video> */}
       </>
     );
   } else {
