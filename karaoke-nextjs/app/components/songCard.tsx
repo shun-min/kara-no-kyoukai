@@ -23,17 +23,20 @@ function updatePlaylist(
 }
 
 export default function SongCard(
-  { songId, songName, playlist_length}: any
+  { songId, songName, path, link, playlist_length}: any
 ) {
   const [currentOrder, setCurrentOrder] = useState(playlist_length);
   
   function onAddSong() {
     const data = {
-      "playlist": 4,
-      "song": songId,
-      "order": currentOrder + 1,
-    }
-    const result = updatePlaylist(data);
+      "name": songName,
+      "path": path,
+      "link": link,
+    };
+    let playlist_str = localStorage.getItem("playlist");
+    console.log(">>>>>", playlist_str);
+    let playlist_entries = JSON.parse(playlist_str);
+    playlist_entries[currentOrder] = data;
     setCurrentOrder(currentOrder + 1);
   };
 

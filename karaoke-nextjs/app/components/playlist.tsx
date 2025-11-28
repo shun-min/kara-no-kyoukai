@@ -1,75 +1,38 @@
+"use client"
+
 import PlaylistEntry from "./playlist_entry";
 
 var host = "http://localhost:8000/karaoke/api/";
-function findActivePlaylist() {
-  const url = host + "v1/playlists/?name=MyPlaylist";
-  const playlist = fetch(url)
-  .then((response) => {
-    const res = response.json();
-    return res;
-  })
+var playlist_str = "";
+var playlist = {};
+
+
+function fetchPlaylistItems() {
+  playlist_str = localStorage.getItem("playlist");
+  playlist = JSON.parse(playlist_str);
   return playlist;
 }
 
 function createActivePlaylist() {
-  const url = host + "v1/playlists/";
-  const playlist = fetch(
-    url,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'name': 'MyPlaylist',
-      }),
-    }
-  )
-  .then((response) => {
-    const res = response.json();
-    return res;
-  })
-  return playlist;
+  let temp = {};
+  playlist_str = JSON.stringify(temp);
+  localStorage.setItem("playlist", playlist_str);
 }
 
-function getPlaylistItems() {
-  const host = "http://localhost:8000/karaoke/api/";
-  const url = host + "v1/playlistitem/?playlist=4";
-  const entries = fetch(url)
-    .then((response) => {
-      const res = response.json();
-      return res;
-    })
-  return entries;
-}
-
-export default async function Playlist() {
-  var activePlaylist = await findActivePlaylist()
-    .then((playlist) => {
-      return playlist[0];
-    })
-  
-  if (activePlaylist.length == 0) {
-    activePlaylist = await createActivePlaylist()
-    .then((playlist) => {
-      return playlist;
-    })
-  }
-  
-  const entries = await getPlaylistItems();
+export default function Playlist() {
+  createActivePlaylist();
+  var entries = fetchPlaylistItems();  
 
   return (
     <>
       <div 
         className={"flex justify-end m-5"}
-        key={activePlaylist["id"]}
       >
-        {activePlaylist['name']}
+        __ My Playlist __
       </div>
 
-      {entries.map((e:any) => 
+      {Object.keys(entries).map((e:any) => 
         <PlaylistEntry
-          entryId={e["id"]}
           songName={e["song"]["name"]}
           path={e["song"]["path"]}
           link={e["song"]["youtube_link"]}

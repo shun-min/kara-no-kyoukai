@@ -23,7 +23,7 @@ function removePlaylistItem(
 }
 
 export default function PlaylistEntry(
-  {entryId, songName, path, link, order}: any
+  {songName, path, link, order}: any
 ) {
   let src_path = link ? link : path;
 

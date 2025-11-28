@@ -28,6 +28,8 @@ export default async function SongList(
         <SongCard 
           songId={s.id}
           songName={s.name}
+          path={s.path}
+          link={s.youtube_link}
           playlist_length={orderNum}
         />
       )
