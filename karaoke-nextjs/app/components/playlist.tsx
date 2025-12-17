@@ -1,45 +1,44 @@
 "use client"
 
+import { usePlaylistContext } from "../context/PlaylistContext";
 import PlaylistEntry from "./playlist_entry";
 
-var host = "http://localhost:8000/karaoke/api/";
-var playlist_str = "";
-var playlist = {};
-
-
-function fetchPlaylistItems() {
-  playlist_str = localStorage.getItem("playlist");
-  playlist = JSON.parse(playlist_str);
-  return playlist;
-}
-
-function createActivePlaylist() {
-  let temp = {};
-  playlist_str = JSON.stringify(temp);
-  localStorage.setItem("playlist", playlist_str);
-}
-
 export default function Playlist() {
-  createActivePlaylist();
-  var entries = fetchPlaylistItems();  
+  const { playlist, removeSong, clearPlaylist } = usePlaylistContext();
 
   return (
-    <>
-      <div 
-        className={"flex justify-end m-5"}
-      >
-        __ My Playlist __
+    <div className="w-full max-w-md">
+      <div className="flex justify-between items-center m-5">
+        <h2 className="text-xl font-bold">My Playlist</h2>
+        {playlist.length > 0 && (
+          <button
+            onClick={clearPlaylist}
+            className="px-3 py-1 text-sm bg-gray-500 hover:bg-gray-600 text-white rounded transition-colors"
+          >
+            Clear All
+          </button>
+        )}
       </div>
 
-      {Object.keys(entries).map((e:any) => 
-        <PlaylistEntry
-          songName={e["song"]["name"]}
-          path={e["song"]["path"]}
-          link={e["song"]["youtube_link"]}
-          order={e["order"]}
-        >
-        </PlaylistEntry>
+      {playlist.length === 0 ? (
+        <div className="m-5 text-gray-500 text-center">
+          Your playlist is empty. Add songs to get started!
+        </div>
+      ) : (
+        <div className="max-h-96 overflow-y-auto">
+          {playlist.map((item) => (
+            <PlaylistEntry
+              key={item.id}
+              id={item.id}
+              songName={item.name}
+              path={item.path}
+              link={item.link}
+              order={item.order}
+              onRemove={removeSong}
+            />
+          ))}
+        </div>
       )}
-    </>
+    </div>
   );
-};
+}

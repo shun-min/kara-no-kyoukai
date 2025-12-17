@@ -6,10 +6,8 @@ function MediaPlayer() {
   const [activeSong, setActiveSong] = useState("");
   
   function checkActiveSong() {
-    if (localStorage.getItem("currSong") === null) {
-      return;
-    } else {
-      let srcPath = localStorage.getItem("currSong");
+    const srcPath = localStorage.getItem("currSong");
+    if (srcPath !== null) {
       setActiveSong(srcPath);
     }
   }

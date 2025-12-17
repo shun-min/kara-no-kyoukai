@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { PlaylistProvider } from "./context/PlaylistContext";
 import Playlist from "./components/playlist";
 import MediaPlayer from "./components/player";
 
@@ -29,19 +30,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <h1>Karaoke App</h1>
-        <div className='inline-block justify-end align-top'>
-          {children}
-        </div>
-        <div className='inline-block justify-end'>
-          <div>
-            <Playlist/>
+        <PlaylistProvider>
+          <h1>Karaoke App</h1>
+          <div className='inline-block justify-end align-top'>
+            {children}
           </div>
-        </div>
-        Media Player
-        <div>
-          <MediaPlayer></MediaPlayer>
-        </div>
+          <div className='inline-block justify-end'>
+            <div>
+              <Playlist/>
+            </div>
+          </div>
+          Media Player
+          <div>
+            <MediaPlayer></MediaPlayer>
+          </div>
+        </PlaylistProvider>
       </body>
     </html>
   );
