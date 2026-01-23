@@ -29,7 +29,7 @@ function MediaPlayer() {
       </>
     );
   } else {
-    return <div>No video playing</div>;
+    return (<div>No video playing</div>);
   }
 }
 

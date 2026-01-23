@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PlaylistProvider } from "./context/PlaylistContext";
 import Playlist from "./components/playlist";
-import MediaPlayer from "./components/player";
+import MediaPlayer from "./(playerWindow)/player/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,12 +40,12 @@ export default function RootLayout({
               <Playlist/>
             </div>
           </div>
-          <div>
+          {/* <div>
             Media Player
           </div>
           <div>
-            <MediaPlayer></MediaPlayer>
-          </div>
+            <MediaPlayer/>
+          </div> */}
         </PlaylistProvider>
       </body>
     </html>
