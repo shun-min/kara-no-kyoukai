@@ -13,10 +13,14 @@ export default async function SongPage({
 
   return (
     <>
-      <SongList
-        category={categoryName}
-        categoryVal={categoryVal}
-      />
+      <div
+        className="inline-block"
+      >
+        <SongList
+          category={categoryName}
+          categoryVal={categoryVal}
+        />
+      </div>
     </>
   );
 };

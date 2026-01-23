@@ -1,4 +1,4 @@
-import Card from '../../components/card';
+import Card from '../../../components/card';
 
 export default async function GenrePage() {
   const host = "http://localhost:8000/karaoke/api/";

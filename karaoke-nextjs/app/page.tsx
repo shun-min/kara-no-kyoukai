@@ -1,27 +1,12 @@
-import Card from './components/card';
+"use client"
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  router.push("/home")
   return (
     <>
     <main>
-      <div className={"inline-block"}>
-        <Card
-          title={ "Artist" }
-          url={ "/artist" }
-        />
-      </div>
-      <div className='inline-block'>
-        <Card
-          title={"Language"}
-          url={ "/language" }
-        />
-      </div>
-      <div className='inline-block'>
-        <Card
-          title={"Genre"}
-          url={ "/genre" }
-        />
-      </div>
     </main>
     </>
   );
