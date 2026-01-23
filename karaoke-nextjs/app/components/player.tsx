@@ -20,8 +20,12 @@ function MediaPlayer() {
   if (activeSong != null) {
     return (
       <>
-        {activeSong}
-        {/* <video src={activeSong} autoPlay></video> */}
+      <div>
+      {activeSong}
+      </div>
+      <div>
+        <iframe width="420" height="315" src={"https://www.youtube.com/embed/" + activeSong + "?&autoplay=1"} title=''/>
+      </div>
       </>
     );
   } else {

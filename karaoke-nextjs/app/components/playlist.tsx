@@ -10,6 +10,8 @@ export default function Playlist() {
     <div className="w-full max-w-md">
       <div className="flex justify-between items-center m-5">
         <h2 className="text-xl font-bold">My Playlist</h2>
+      </div>
+      <div>
         {playlist.length > 0 && (
           <button
             onClick={clearPlaylist}

@@ -40,7 +40,9 @@ export default function RootLayout({
               <Playlist/>
             </div>
           </div>
-          Media Player
+          <div>
+            Media Player
+          </div>
           <div>
             <MediaPlayer></MediaPlayer>
           </div>
