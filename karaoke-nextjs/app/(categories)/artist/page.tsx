@@ -10,13 +10,13 @@ export default async function ArtistsPage() {
   })
   return (
     <>
-      <h1>Artist page</h1>
+      <h1>Artists</h1>
       {
         artists.map((a: any) => 
           <Card
             key={a.id}
-            title={ a.name }
-            url={ "/song/artist_" + a.name }
+            title={a.name}
+            url={"/song/artist_"+a.id}
           />
         )
       }

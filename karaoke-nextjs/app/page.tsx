@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <div className={"inline-block"}>
         <Card
-          title={ "Artists" }
+          title={ "Artist" }
           url={ "/artist" }
         />
       </div>

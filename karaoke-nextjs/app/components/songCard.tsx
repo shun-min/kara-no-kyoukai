@@ -1,47 +1,33 @@
 "use client"
-import { useState } from "react";
+import { usePlaylistContext } from "../context/PlaylistContext";
 
-function updatePlaylist(
-  data: Object
-) {
-  const url = "http://localhost:8000/karaoke/api/v1/playlistitem/";
-
-  const playlist_item = fetch(url, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
-  })
-    .then((response) => {
-      if (typeof(response) != "object") {
-        return "Failed";
-      }
-      const res = response.json();
-      return res;
-    })
-
-  return playlist_item;
+interface SongCardProps {
+  songId: number | string;
+  songName: string;
+  path?: string;
+  link?: string;
+  playlist_length?: number; // Kept for backward compatibility but not used
 }
 
-export default function SongCard(
-  { songId, songName, playlist_length}: any
-) {
-  const [currentOrder, setCurrentOrder] = useState(playlist_length);
+export default function SongCard({
+  songId,
+  songName,
+  path,
+  link,
+}: SongCardProps) {
+  const { addSong } = usePlaylistContext();
   
   function onAddSong() {
-    const data = {
-      "playlist": 4,
-      "song": songId,
-      "order": currentOrder + 1,
-    }
-    const result = updatePlaylist(data);
-    setCurrentOrder(currentOrder + 1);
-  };
+    addSong(songName, path, link);
+  }
 
   return (
-    <>
-      <button key={songId} onClick={onAddSong}>
-        {songName}
-      </button>
-    </>
+    <button
+      key={songId}
+      onClick={onAddSong}
+      className="px-4 py-2 m-2 bg-green-500 hover:bg-green-600 text-white rounded transition-colors"
+    >
+      {songName}
+    </button>
   );
-};
+}

@@ -1,80 +1,46 @@
+"use client"
+
+import { usePlaylistContext } from "../context/PlaylistContext";
 import PlaylistEntry from "./playlist_entry";
 
-var host = "http://localhost:8000/karaoke/api/";
-function findActivePlaylist() {
-  const url = host + "v1/playlists/?name=MyPlaylist";
-  const playlist = fetch(url)
-  .then((response) => {
-    const res = response.json();
-    return res;
-  })
-  return playlist;
-}
-
-function createActivePlaylist() {
-  const url = host + "v1/playlists/";
-  const playlist = fetch(
-    url,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'name': 'MyPlaylist',
-      }),
-    }
-  )
-  .then((response) => {
-    const res = response.json();
-    return res;
-  })
-  return playlist;
-}
-
-function getPlaylistItems() {
-  const host = "http://localhost:8000/karaoke/api/";
-  const url = host + "v1/playlistitem/?playlist=4";
-  const entries = fetch(url)
-    .then((response) => {
-      const res = response.json();
-      return res;
-    })
-  return entries;
-}
-
-export default async function Playlist() {
-  var activePlaylist = await findActivePlaylist()
-    .then((playlist) => {
-      return playlist[0];
-    })
-  
-  if (activePlaylist.length == 0) {
-    activePlaylist = await createActivePlaylist()
-    .then((playlist) => {
-      return playlist;
-    })
-  }
-  
-  const entries = await getPlaylistItems();
+export default function Playlist() {
+  const { playlist, removeSong, clearPlaylist } = usePlaylistContext();
 
   return (
-    <>
-      <div 
-        className={"flex justify-end m-5"}
-        key={activePlaylist["id"]}
-      >
-        {activePlaylist['name']}
+    <div className="w-full max-w-md">
+      <div className="flex justify-between items-center m-5">
+        <h2 className="text-xl font-bold">My Playlist</h2>
+      </div>
+      <div>
+        {playlist.length > 0 && (
+          <button
+            onClick={clearPlaylist}
+            className="px-3 py-1 text-sm bg-gray-500 hover:bg-gray-600 text-white rounded transition-colors"
+          >
+            Clear All
+          </button>
+        )}
       </div>
 
-      {entries.map((e:any) => 
-        <PlaylistEntry
-          songId={e["song"]["id"]}
-          songName={e["song"]["name"]}
-          entryId={e["id"]}
-          order={e["order"]}
-        />
+      {playlist.length === 0 ? (
+        <div className="m-5 text-gray-500 text-center">
+          Your playlist is empty. Add songs to get started!
+        </div>
+      ) : (
+        <div className="max-h-96 overflow-y-auto">
+          {playlist.map((item) => (
+            <PlaylistEntry
+              key={item.id}
+              id={item.id}
+              songName={item.name}
+              path={item.path}
+              link={item.link}
+              order={item.order}
+              onRemove={removeSong}
+            />
+          ))}
+        </div>
       )}
-    </>
+    </div>
   );
-};
+}
