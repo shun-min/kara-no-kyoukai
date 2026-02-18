@@ -6,7 +6,7 @@ interface SongCardProps {
   songName: string;
   path?: string;
   link?: string;
-  playlist_length?: number; // Kept for backward compatibility but not used
+  playlist_length?: number;
 }
 
 export default function SongCard({

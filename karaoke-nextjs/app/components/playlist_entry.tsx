@@ -24,7 +24,6 @@ export default function PlaylistEntry({
 
   function playSong(src_path: string) {
     localStorage.setItem("currSong", src_path);
-    console.log("playing: ", src_path);
     window.open("/player", "songTab");
   }
 

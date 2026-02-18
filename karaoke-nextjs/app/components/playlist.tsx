@@ -24,7 +24,7 @@ export default function Playlist() {
 
       {playlist.length === 0 ? (
         <div className="m-5 text-gray-500 text-center">
-          Your playlist is empty. Add songs to get started!
+          Playlist empty. Add songs to get started!
         </div>
       ) : (
         <div className="max-h-96 overflow-y-auto">

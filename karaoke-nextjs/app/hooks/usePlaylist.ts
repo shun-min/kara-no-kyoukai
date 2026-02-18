@@ -11,6 +11,7 @@ export interface PlaylistItem {
 }
 
 const STORAGE_KEY = "karaoke_playlist";
+var songIndex = 0;
 
 // Internal hook - use usePlaylistContext from context instead
 export function usePlaylist() {
@@ -39,13 +40,15 @@ export function usePlaylist() {
 
   const addSong = useCallback((name: string, path?: string, link?: string) => {
     const newItem: PlaylistItem = {
-      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      // id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      songIndex,
       name,
       path,
       link,
       order: playlist.length + 1,
     };
     setPlaylist((prev) => [...prev, newItem]);
+    songIndex += 1;
     return newItem;
   }, [playlist.length]);
 
