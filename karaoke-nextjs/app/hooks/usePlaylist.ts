@@ -17,31 +17,9 @@ var songIndex = 0;
 export function usePlaylist() {
   const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
 
-  // Load playlist from localStorage on mount
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setPlaylist(Array.isArray(parsed) ? parsed : []);
-      } catch (e) {
-        console.error("Failed to parse playlist from localStorage:", e);
-        setPlaylist([]);
-      }
-    }
-  }, []);
-
-  // Save playlist to localStorage whenever it changes
-  useEffect(() => {
-    if (playlist.length > 0 || localStorage.getItem(STORAGE_KEY)) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(playlist));
-    }
-  }, [playlist]);
-
   const addSong = useCallback((name: string, path?: string, link?: string) => {
     const newItem: PlaylistItem = {
-      // id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      songIndex,
+      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       name,
       path,
       link,
