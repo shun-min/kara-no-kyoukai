@@ -4,7 +4,7 @@ import { usePlaylistContext } from "../context/PlaylistContext";
 import PlaylistEntry from "./playlist_entry";
 
 export default function Playlist() {
-  const { playlist, removeSong, clearPlaylist } = usePlaylistContext();
+  const { playlist, clearPlaylist } = usePlaylistContext();
 
   return (
     <div className="w-full max-w-md">
@@ -24,7 +24,7 @@ export default function Playlist() {
 
       {playlist.length === 0 ? (
         <div className="m-5 text-gray-500 text-center">
-          Playlist empty. Add songs to get started!
+          Playlist empty. Add songs to get started
         </div>
       ) : (
         <div className="max-h-96 overflow-y-auto">
@@ -36,7 +36,6 @@ export default function Playlist() {
               path={item.path}
               link={item.link}
               order={item.order}
-              onRemove={removeSong}
             />
           ))}
         </div>

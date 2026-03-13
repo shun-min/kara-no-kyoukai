@@ -1,6 +1,8 @@
 "use client"
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import { usePlaylistContext } from "../context/PlaylistContext";
+
 
 interface PlaylistEntryProps {
   id: string;
@@ -8,7 +10,6 @@ interface PlaylistEntryProps {
   path?: string;
   link?: string;
   order: number;
-  onRemove: (id: string) => void;
 }
 
 export default function PlaylistEntry({
@@ -17,9 +18,9 @@ export default function PlaylistEntry({
   path,
   link,
   order,
-  onRemove,
 }: PlaylistEntryProps) {
   const src_path = link || path;
+  const { removeSong } = usePlaylistContext();
   // const router = useRouter();
 
   function playSong(src_path: string) {
@@ -36,7 +37,7 @@ export default function PlaylistEntry({
         {order}. {songName}
       </button>
       <button
-        onClick={() => onRemove(id)}
+        onClick={() => removeSong(id)}
         className="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition-colors"
         aria-label="Remove from playlist"
       >

@@ -3,7 +3,7 @@
 import { createContext, useContext, ReactNode } from "react";
 import { usePlaylist, PlaylistItem } from "../hooks/usePlaylist";
 
-interface PlaylistContextType {
+interface PlaylistFeatures {
   playlist: PlaylistItem[];
   addSong: (name: string, path?: string, link?: string) => PlaylistItem;
   removeSong: (id: string) => void;
@@ -11,7 +11,7 @@ interface PlaylistContextType {
   getPlaylistLength: () => number;
 }
 
-const PlaylistContext = createContext<PlaylistContextType | undefined>(undefined);
+const PlaylistContext = createContext<PlaylistFeatures | undefined>(undefined);
 
 export function PlaylistProvider({ children }: { children: ReactNode }) {
   const playlist = usePlaylist();
