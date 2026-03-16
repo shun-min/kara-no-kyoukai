@@ -1,7 +1,6 @@
 "use client"
-import { useRouter } from "next/navigation";
-import Link from 'next/link';
 import { usePlaylistContext } from "../context/PlaylistContext";
+import { usePlayerContext } from '../context/PlayerContext';
 
 
 interface PlaylistEntryProps {
@@ -21,10 +20,11 @@ export default function PlaylistEntry({
 }: PlaylistEntryProps) {
   const src_path = link || path;
   const { removeSong } = usePlaylistContext();
+  const { setCurrentSong } = usePlayerContext();
   // const router = useRouter();
 
   function playSong(src_path: string) {
-    localStorage.setItem("currSong", src_path);
+    setCurrentSong(src_path);
     window.open("/player", "songTab");
   }
 

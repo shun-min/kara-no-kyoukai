@@ -26,6 +26,7 @@ export default async function SongList(
     {
       songs.map((s:any) => 
         <SongCard 
+          key={s.id}
           songId={s.id}
           songName={s.name}
           path={s.path}

@@ -1,34 +1,9 @@
 "use client"
-import next from 'next';
-import React, { useEffect, useState } from 'react'
-import { usePlaylistContext } from "../context/PlaylistContext";
+import React, { useEffect } from 'react'
+import { usePlayerContext } from '../context/PlayerContext';
 
 function MediaPlayer() {
-  const [activeSong, setActiveSong] = useState("");
-  const { playlist, removeSong } = usePlaylistContext();
-
-  function playNextSong() {
-    let videoElement = document.getElementById('myPlayer');
-    // videoElement.src = videoList[currentVideoIndex]; // start with the first video videoElement.play();
-    // videoElement.addEventListener('ended', function() { // when a video ends, increment currentVideoIndex, and load the next video currentVideoIndex++;
-
-    //   // set the source to the next video in the list, and play
-    // videoElement.src = localStorage.getItem[];
-    // videoElement.play();
-    let nextSong = "";
-      setActiveSong(nextSong);
-  }
-  function checkActiveSong() {
-    const srcPath = localStorage.getItem("currSong");
-    if (srcPath !== null) {
-      setActiveSong(srcPath);
-    }
-  }
-
-  useEffect(() => {
-    checkActiveSong();
-  }
-  , []);
+  const { activeSong, setCurrentSong, fetchNextSong } = usePlayerContext();
 
   if (activeSong != null) {
     let url = "https://www.youtube.com/embed/" + activeSong;
@@ -46,7 +21,7 @@ function MediaPlayer() {
         allowFullScreen
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
         title=''
-        onEnded={playNextSong}
+        onEnded={fetchNextSong}
         />
       </div>
       </>

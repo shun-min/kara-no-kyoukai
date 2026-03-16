@@ -10,7 +10,6 @@ export interface PlaylistItem {
   order: number;
 }
 
-const STORAGE_KEY = "karaoke_playlist";
 var songIndex = 0;
 
 // Internal hook - use usePlaylistContext from context instead
@@ -43,7 +42,6 @@ export function usePlaylist() {
 
   const clearPlaylist = useCallback(() => {
     setPlaylist([]);
-    localStorage.removeItem(STORAGE_KEY);
   }, []);
 
   const getPlaylistLength = useCallback(() => {
