@@ -4,17 +4,15 @@ import { createContext, useContext, ReactNode } from "react";
 import { usePlayer } from "../hooks/usePlayer";
 
 
-interface PlayerFeatures {
+export interface PlayerFeatures {
   activeSong: string | undefined;
-  fetchNextSong: () => void;
   setCurrentSong: (songUrl: string) => void;
+  fetchNextSong: () => void;
 }
-
 const PlayerContext = createContext<PlayerFeatures | undefined>(undefined);
 
 export function PlayerProvider({ children }: { children: ReactNode }) {
   const player = usePlayer();
-
   return (
     <PlayerContext.Provider value={player}>
       {children}
@@ -24,7 +22,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
 
 export function usePlayerContext() {
   const context = useContext(PlayerContext);
-  if (context == undefined) {
+  if (context === undefined) {
     throw new Error("usePlayerContext must be used within a PlayerProvider");
   }
   return context;

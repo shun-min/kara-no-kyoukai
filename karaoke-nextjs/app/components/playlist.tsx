@@ -7,7 +7,7 @@ export default function Playlist() {
   const { playlist, clearPlaylist } = usePlaylistContext();
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-md inline-block justify-end align-top">
       <div className="flex justify-between items-center m-5">
         <h2 className="text-xl font-bold">My Playlist</h2>
       </div>

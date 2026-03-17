@@ -5,10 +5,8 @@ export default function Layout(
 ) {
   return (
     <>
-      <main>
-        <NavBar />
-        {children}
-      </main>
+      <NavBar />
+      {children}
     </>
   )
 }

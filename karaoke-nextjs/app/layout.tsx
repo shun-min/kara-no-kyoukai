@@ -1,9 +1,10 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PlaylistProvider } from "./context/PlaylistContext";
+import { PlayerProvider } from "./context/PlayerContext";
 
-// import MediaPlayer from "./(playerWindow)/player/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PlaylistProvider>
-          <div className='inline-block justify-end align-top'>
+          <PlayerProvider>
+            <div className='inline-block justify-end align-top'></div>
             {children}
-          </div>
+          </PlayerProvider>
         </PlaylistProvider>
       </body>
     </html>

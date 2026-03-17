@@ -11,6 +11,8 @@ interface PlaylistEntryProps {
   order: number;
 }
 
+let win: any = null;
+
 export default function PlaylistEntry({
   id,
   songName,
@@ -18,20 +20,25 @@ export default function PlaylistEntry({
   link,
   order,
 }: PlaylistEntryProps) {
-  const src_path = link || path;
   const { removeSong } = usePlaylistContext();
   const { setCurrentSong } = usePlayerContext();
-  // const router = useRouter();
-
-  function playSong(src_path: string) {
-    setCurrentSong(src_path);
-    window.open("/player", "songTab");
+  function playSong() {
+    if (link === undefined) {
+      return;
+    }
+    if (win === null) {
+      win = window.open("/player", "songTab");
+    } else {
+      win.focus();
+    }
+    console.log("Link: "+ link);
+    setCurrentSong(link);
   }
 
   return (
     <div className="flex gap-x-2 m-2 items-center">
       <button
-        onClick={() => src_path && playSong(src_path)}
+        onClick={playSong}
         className="flex-1 text-left px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors"
       >
         {order}. {songName}
