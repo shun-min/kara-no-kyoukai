@@ -26,12 +26,6 @@ export default function PlaylistEntry({
     if (link === undefined) {
       return;
     }
-    if (win === null) {
-      win = window.open("/player", "songTab");
-    } else {
-      win.focus();
-    }
-    console.log("Link: "+ link);
     setCurrentSong(link);
   }
 
