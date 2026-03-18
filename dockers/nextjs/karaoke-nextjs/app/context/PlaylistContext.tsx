@@ -5,7 +5,7 @@ import { usePlaylist, PlaylistItem } from "../hooks/usePlaylist";
 
 interface PlaylistFeatures {
   playlist: PlaylistItem[];
-  addSong: (name: string, path?: string, link?: string) => PlaylistItem;
+  addSong: (name: string, link: string) => PlaylistItem;
   removeSong: (id: string) => void;
   clearPlaylist: () => void;
   getPlaylistLength: () => number;

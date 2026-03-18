@@ -1,31 +1,27 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 export interface PlaylistItem {
   id: string;
   name: string;
-  path?: string;
-  link?: string;
+  link: string;
   order: number;
 }
 
-var songIndex = 0;
 
 // Internal hook - use usePlaylistContext from context instead
 export function usePlaylist() {
   const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
 
-  const addSong = useCallback((name: string, path?: string, link?: string) => {
+  const addSong = useCallback((name: string, link: string) => {
     const newItem: PlaylistItem = {
       id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       name,
-      path,
       link,
       order: playlist.length + 1,
     };
     setPlaylist((prev) => [...prev, newItem]);
-    songIndex += 1;
     return newItem;
   }, [playlist.length]);
 

@@ -1,7 +1,12 @@
 import Link from 'next/link';
 
+interface CardProps {
+  title: string,
+  url: string,
+}
+
 export default function Card(
-  { title, url }: any,
+  { title, url }: CardProps,
 ) {
   // let url = "/song/" + category + "/?" + category + "_" + option;
   return (

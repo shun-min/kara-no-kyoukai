@@ -4,20 +4,18 @@ import { usePlaylistContext } from "../context/PlaylistContext";
 interface SongCardProps {
   songId: number | string;
   songName: string;
-  path?: string;
-  link?: string;
+  link: string;
 }
 
 export default function SongCard({
   songId,
   songName,
-  path,
   link,
 }: SongCardProps) {
   const { addSong } = usePlaylistContext();
   
   function onAddSong() {
-    addSong(songName, path, link);
+    addSong(songName, link);
   }
 
   return (

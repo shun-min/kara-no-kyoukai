@@ -6,17 +6,14 @@ import { usePlayerContext } from '../context/PlayerContext';
 interface PlaylistEntryProps {
   id: string;
   songName: string;
-  path?: string;
-  link?: string;
+  link: string;
   order: number;
 }
 
-let win: any = null;
 
 export default function PlaylistEntry({
   id,
   songName,
-  path,
   link,
   order,
 }: PlaylistEntryProps) {
