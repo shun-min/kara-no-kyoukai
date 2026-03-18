@@ -31,9 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* expose custom context to children*/}
         <PlaylistProvider>
           <PlayerProvider>
-            <div className='inline-block justify-end align-top'></div>
             {children}
           </PlayerProvider>
         </PlaylistProvider>

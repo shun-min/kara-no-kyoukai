@@ -1,7 +1,7 @@
 import Card from '../../../components/card';
 
 export default async function GenrePage() {
-  const host = "http://localhost:8000/karaoke/api/";
+  const host = process.env.NEXT_PUBLIC_PROD_HOST + "karaoke/api/";
   const url = host + "v1/genres/";
   const genres = await fetch(url)
   .then((response) => {
@@ -10,6 +10,7 @@ export default async function GenrePage() {
   })
   return (
     <>
+      <div className="w-full inline-block align-top">
       <h1>Genres</h1>
       {
         genres.map((g: any) => 
@@ -20,6 +21,7 @@ export default async function GenrePage() {
           />
         )
       }
+      </div>
     </>
   );
 };
