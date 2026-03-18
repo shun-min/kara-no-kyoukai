@@ -10,6 +10,7 @@ export default async function ArtistsPage() {
   })
   return (
     <>
+      <div className="w-full inline-block align-top">
       <h1>Artists</h1>
       {
         artists.map((a: any) => 
@@ -20,6 +21,7 @@ export default async function ArtistsPage() {
           />
         )
       }
+      </div>
     </>
   );
 };

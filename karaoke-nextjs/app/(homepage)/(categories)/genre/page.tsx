@@ -10,6 +10,7 @@ export default async function GenrePage() {
   })
   return (
     <>
+      <div className="w-full inline-block align-top">
       <h1>Genres</h1>
       {
         genres.map((g: any) => 
@@ -20,6 +21,7 @@ export default async function GenrePage() {
           />
         )
       }
+      </div>
     </>
   );
 };

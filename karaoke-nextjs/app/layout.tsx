@@ -33,7 +33,6 @@ export default function RootLayout({
       >
         <PlaylistProvider>
           <PlayerProvider>
-            <div className='inline-block justify-end align-top'></div>
             {children}
           </PlayerProvider>
         </PlaylistProvider>

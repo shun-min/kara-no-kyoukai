@@ -10,6 +10,7 @@ export default async function LanguagePage() {
   })
   return (
     <>
+      <div className="w-full inline-block align-top">
       <h1>Languages</h1>
       {
         languages.map((l: any) => 
@@ -20,6 +21,7 @@ export default async function LanguagePage() {
           />
         )
       }
+      </div>
     </>
   );
 };

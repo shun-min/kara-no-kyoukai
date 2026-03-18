@@ -14,7 +14,7 @@ export default async function SongPage({
   return (
     <>
       <div
-        className="inline-block"
+        className="inline-block justify-end align-top"
       >
         <SongList
           category={categoryName}

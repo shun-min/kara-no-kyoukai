@@ -12,13 +12,13 @@ export default function Layout(
   return (
     <>
       <main>
-        <div className='inline-block justify-end'>
+        <div className='inline-block justify-end align-top'>
           {children}
         </div>
-        <div className='inline-block justify-end'>
+        <div className='inline-block justify-end align-top'>
           <Playlist />
         </div>
-        <div>
+        <div className='inline-block justify-end align-top'>
           <MediaPlayer 
             url={activeSong}
             func={fetchNextSong}
