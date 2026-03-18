@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "setuptools>=69",
+    "setuptools",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 name = "kara-no-kyoukai"
 version = "1.0.0"
 description = "Karaoke system powered by Youtube"
-requires-python = ">=3.14.3"
+requires-python = ">=3.14.0"
 dependencies = [
     "django==5.0.7",
     "djangorestframework",
@@ -34,7 +34,7 @@ include = ["core", "backend"]
 namespaces = false
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py314"
 
 [tool.ruff.format]
 # Use single quotes for non-triple-quoted strings.
