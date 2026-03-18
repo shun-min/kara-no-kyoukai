@@ -7,17 +7,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kara-no-kyoukai"
-version = "2024.07.13"
+version = "1.0.0"
 description = "Karaoke system powered by Youtube"
-requires-python = ">=3.12.1"
+requires-python = ">=3.14.3"
 dependencies = [
     "django==5.0.7",
-    "djangorestframework==3.15.2",
-    "django-filter==24.2",
-    "django-cors-headers==4.5.0",
-    "markdown",
-    "PyYAML",
-    "django-seed==0.3.1",
+    "djangorestframework",
+    "django-filter",
+    "django-cors-headers",
 ]
 
 [project.optional-dependencies]
@@ -25,6 +22,7 @@ dependencies = [
 dev = [
     "pre-commit>=4.3.0",
     "django-seed",
+    "PyYAML",  # for django-seed
 ]
 # only if you have a specific local use for them
 # or if you want to integrate them with your IDE
