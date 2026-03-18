@@ -1,7 +1,7 @@
 # Setup backend
 ### Notes:
 1. Top level `karaoke-django` folder is the django project root, which contains a `core` app and `backend` app.
-2. `pyproject.toml` and `env` are outside of the django project root, but does not affect the frontend folder.
+2. `pyproject.toml` and `env` virtualenv folder are outside of the django project root, but does not affect the frontend folder.
 
 ## Pre-requisites:
 1. Have pyenv installed
@@ -20,7 +20,8 @@ pip install -e .[dev]
 pip install -e .[dev-lint]
 ```
 4. `cd karaoke-django`
-5. `python manage.py runserver` to test
+5. create `.env` file, add `DJANGO_SECRET` value. Re-generate it if you don't have one
+6. `python manage.py runserver` to test
 
 ## Database: 
 This project uses sqlite, controls db data with django-seed module. \
@@ -65,6 +66,8 @@ npm -v
 
 5. Install packages into node_modules folder, based on package.json
 `npm install`
+
+6. cd into `karaoke-nextjs`, create a .env file, add `NEXT_PUBLIC_PROD_HOST` value (localhost or prod domain)
 
 # Run nextJS server
 `npm run dev`

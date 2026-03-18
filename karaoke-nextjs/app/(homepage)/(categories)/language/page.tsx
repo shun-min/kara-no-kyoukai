@@ -1,7 +1,7 @@
 import Card from '../../../components/card';
 
 export default async function LanguagePage() {
-  const host = "http://localhost:8000/karaoke/api/";
+  const host = process.env.NEXT_PUBLIC_PROD_HOST + "karaoke/api/";
   const url = host + "v1/languages/";
   const languages = await fetch(url)
   .then((response) => {

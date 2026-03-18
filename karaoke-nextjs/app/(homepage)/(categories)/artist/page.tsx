@@ -1,7 +1,8 @@
 import Card from '../../../components/card';
 
+
 export default async function ArtistsPage() {
-  const host = "http://localhost:8000/karaoke/api/";
+  const host = process.env.NEXT_PUBLIC_PROD_HOST + "karaoke/api/";
   const url = host + "v1/artists/";
   const artists = await fetch(url)
   .then((response) => {
