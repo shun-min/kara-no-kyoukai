@@ -8,7 +8,7 @@ import { usePlayerContext } from '../context/PlayerContext';
 export default function Layout(
   { children }: { children: React.ReactNode },
 ) {
-  const {activeSong, fetchNextSong} = usePlayerContext();
+  const { activeSong } = usePlayerContext();
   return (
     <>
       <main>
@@ -21,7 +21,7 @@ export default function Layout(
         <div className='inline-block justify-end align-top'>
           <MediaPlayer 
             url={activeSong}
-            func={fetchNextSong}
+            // func={fetchNextSong}
           />
         </div>
       </main>

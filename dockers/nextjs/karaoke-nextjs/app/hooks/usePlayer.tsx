@@ -15,7 +15,7 @@ export function usePlayer() {
   const fetchNextSong = useCallback(() => {
     setActiveSong(playlist[1].link);
     removeSong(playlist[0].id);
-  }, []);
+  }, [playlist, removeSong]);
 
   return {
     activeSong,

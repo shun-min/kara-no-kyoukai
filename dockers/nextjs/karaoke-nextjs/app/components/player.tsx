@@ -3,11 +3,11 @@
 
 interface MediaProps {
   url: string | undefined,
-  func: any,
+  // func: Function,
 }
 
 export default function MediaPlayer(
-  {url, func}: MediaProps,
+  {url}: MediaProps,
 ) {
   return(
     <>
@@ -23,7 +23,7 @@ export default function MediaPlayer(
             allowFullScreen
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             title=''
-            onEnded={func}
+            // onEnded={func}
           />
         )
       }

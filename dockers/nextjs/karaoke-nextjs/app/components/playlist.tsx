@@ -33,7 +33,6 @@ export default function Playlist() {
               key={item.id}
               id={item.id}
               songName={item.name}
-              path={item.path}
               link={item.link}
               order={item.order}
             />
