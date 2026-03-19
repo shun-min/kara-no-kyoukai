@@ -8,10 +8,11 @@ interface CardProps {
 export default function Card(
   { title, url }: CardProps,
 ) {
-  // let url = "/song/" + category + "/?" + category + "_" + option;
   return (
-    <div className="m-20">
-      <Link href={url}>{title}</Link>
+    <div className="m-2 p-3 inline-block bg-blue-400">
+      <Link 
+        href={url}>{title}
+      </Link>
     </div>
   )
 }

@@ -11,8 +11,8 @@ export default async function ArtistsPage() {
   })
   return (
     <>
-      <div className="w-full inline-block align-top">
-      <h1>Artists</h1>
+      <div>
+      <h1 className="p-4 font-bold text-[25px]">Artists</h1>
       {
         artists.map((a: any) => 
           <Card

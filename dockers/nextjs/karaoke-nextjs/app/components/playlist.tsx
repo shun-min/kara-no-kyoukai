@@ -7,7 +7,7 @@ export default function Playlist() {
   const { playlist, clearPlaylist } = usePlaylistContext();
 
   return (
-    <div className="w-full max-w-md inline-block justify-end align-top">
+    <div className="w-full inline-block justify-end align-top">
       <div className="flex justify-between items-center m-5">
         <h2 className="text-xl font-bold">Playlist</h2>
       </div>
@@ -24,7 +24,7 @@ export default function Playlist() {
 
       {playlist.length === 0 ? (
         <div className="m-5 text-gray-500 text-center">
-          Playlist empty. Add songs to get started
+          Empty
         </div>
       ) : (
         <div className="max-h-96 overflow-y-auto">
