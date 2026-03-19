@@ -10,8 +10,8 @@ export default async function LanguagePage() {
   })
   return (
     <>
-      <div className="w-full inline-block align-top">
-      <h1>Languages</h1>
+      <div>
+      <h1 className="p-4 font-bold text-[25px]">Languages</h1>
       {
         languages.map((l: any) => 
           <Card
