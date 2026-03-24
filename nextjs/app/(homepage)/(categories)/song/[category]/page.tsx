@@ -1,4 +1,4 @@
-import SongList from "@/app/components/songList";
+import SongList from "../../../../components/songList";
 
 export default async function SongPage({
   params,
